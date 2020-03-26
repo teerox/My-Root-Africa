@@ -21,6 +21,11 @@ class WhyPlantATreeViewController: UIViewController {
     var sendSecond = ""
     var sendThird = ""
     
+      var userName = ""
+      var userEmail = ""
+      var userToken = ""
+      var userContry = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,12 +83,7 @@ class WhyPlantATreeViewController: UIViewController {
         }
             
             performSegue(withIdentifier: "moveToTypeOfOccassion", sender: self)
-            
-//            if (first != "" || second != "" || third != "") {
-//
-//                performSegue(withIdentifier: "moveToTypeOfOccassion", sender: self)
-//
-//            }
+
         
         }
     }
@@ -91,12 +91,17 @@ class WhyPlantATreeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let vc = segue.destination as!TypeOfOccationViewController
+        let vc = segue.destination as! TypeOfOccationViewController
         
         vc.firstRecieved = sendFirst
         vc.SecondRecieved = sendSecond
         vc.thirdRecieved = sendThird
         vc.country = countrySelected
+        
+        vc.userName = userName
+       vc.userEmail = userEmail
+       vc.userToken = userToken
+       vc.userContry = userContry
     }
     
     func showAlert(for alert: String) {

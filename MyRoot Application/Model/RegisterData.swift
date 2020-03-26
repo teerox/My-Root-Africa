@@ -31,7 +31,7 @@ struct ResponseGiven:Codable {
     var token:String?
 }
 
-struct ErrorMessage:Codable {
+struct Message:Codable {
     var message:String
     var status:Int
     
@@ -40,6 +40,9 @@ struct ErrorMessage:Codable {
 struct Auth:Codable {
     var code:String
 }
+
+
+
 
 
 // MARK: - Welcome
@@ -76,18 +79,18 @@ struct Login: Codable {
 
 // MARK: - Welcome
 struct LoginSucessful: Codable {
-    let status: Int
-    let message: String
-    let payload: LoginResult
-    let token: String
+    let status: Int?
+    let message: String?
+    let payload: LoginResult?
+    let token: String?
 }
 
 // MARK: - Payload
 struct LoginResult: Codable {
-    let isVerified: Bool
-    let id, name, email, password: String
-    let country, phone, createdAt, updatedAt: String
-    let v: Int
+    let isVerified: Bool?
+    let id, name, email, password: String?
+    let country, phone, createdAt, updatedAt: String?
+    let v: Int?
     
 
     enum CodingKeys: String, CodingKey {
@@ -99,27 +102,20 @@ struct LoginResult: Codable {
 }
 
 
-struct ForgotPassword {
-    let email:String
-}
 
-struct RequestEmailResponse {
-    let status:Int
-    let email:String
+struct ForgotPasswordEmail:Codable {
+    var email:String?
 }
 
 
 
-struct ResetPassword {
-    let email:String
-    let code:String
-    let password:String
+struct ResetPasswordValues:Codable {
+    let email:String?
+    let code:String?
+    let password:String?
 }
 
-struct ResetPasswordResponse {
-    let status:Int
-    let message:String
-}
+
 
 
 
@@ -137,4 +133,44 @@ struct fullData {
     let sendDecorativeTree: String
     let sendFruitTree: String
     let sendEnvironmentalTree: String
+}
+
+struct CompleteData: Codable {
+    let email:String
+    let name:String
+    let picture:String
+    let locationType:String
+    let reason:Reason
+    let occasion:String
+    let date:String
+    let country:String
+    let location:String
+    let longitude:String
+    let latitude:String
+
+}
+
+struct Reason: Codable {
+   let isOccasion:Bool
+   let isGift:Bool
+    
+}
+
+
+
+// MARK: - Welcome
+struct AllUserInput: Codable {
+    let status: Int
+    let message: String
+    let payload: AllPayload
+}
+
+// MARK: - Payload
+struct AllPayload: Codable {
+    let date, id, userid, type: String
+    let payloadDescription, country: String
+    let longitude, latitude: Int
+    let picture: String
+    let createdAt, updatedAt: String
+
 }

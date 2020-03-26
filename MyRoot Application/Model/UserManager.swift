@@ -17,14 +17,7 @@ import Foundation
 struct UserManager{
     
     var ApiData = Utility()
-    var login = LoginRequest()
-  
-    func login(userData:Login) {
-        let endpoint = "user/login"
-        let url = "\(ApiData.API)\(endpoint)"
-        login.save(urlString: url, user: userData)
-    }
-    
+
     
    
 }

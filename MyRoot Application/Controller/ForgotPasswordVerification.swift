@@ -1,40 +1,48 @@
 //
-//  ForgotPasswordViewController.swift
+//  ForgotPasswordVerification.swift
 //  MyRoot Application
 //
-//  Created by macbook on 3/18/20.
+//  Created by macbook on 3/25/20.
 //  Copyright © 2020 Decagon. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordVerification: UIViewController {
     
-    @IBOutlet weak var emailForForgotPassword: UITextField!
+    @IBOutlet weak var emailVerify: UITextField!
+    
+    @IBOutlet weak var codeVerify: UITextField!
+    
+    @IBOutlet weak var passwordVerify: UITextField!
     
     var ApiData = Utility()
     
-    
     override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
+           super.viewDidLoad()
+        
+       }
+
+ 
     @IBAction func submitButton(_ sender: UIButton) {
         validate()
     }
     
     
+    
     func validate(){
           self.showSpinner(onView: self.view)
           do {
-              let userEmail = try emailForForgotPassword.validatedTexts(validationTypes: ValidatorType.email)
-                    let endpoint = "auth/forgot-password"
+             let userEmail = try self.emailVerify.validatedText(validationType: ValidatorType.email)
+            let userCode = try self.codeVerify.validatedText(validationType: ValidatorType.codeValidator)
+              let userPassword = try self.passwordVerify.validatedText(validationType: ValidatorType.password)
+            
+                    let endpoint = "auth/reset-password"
                     let url = "\(ApiData.API)\(endpoint)"
-                    let data = ForgotPasswordEmail(email: userEmail)
-            print(url)
-            ForgotPassword.shared.save(urlString: url, email: data){ (success, error, result) in
+                    let data = ResetPasswordValues(email: userEmail, code: userCode, password: userPassword)
+            
+            ResetPassword.shared.save(urlString: url, userDetails: data){ (success, error, result) in
                  if success {
                               let response = result!
                               let status = response.status
@@ -44,7 +52,7 @@ class ForgotPasswordViewController: UIViewController {
                         print("My Response:\(response)")
                            DispatchQueue.main.async {
                                self.removeSpinner()
-                               self.performSegue(withIdentifier: "movetoResetPassword", sender: self)
+                               self.performSegue(withIdentifier: "moveToLoginAfterPaswordReset", sender: self)
                                self.showAlert(for: message)
                    
                                }
@@ -64,7 +72,7 @@ class ForgotPasswordViewController: UIViewController {
     
           }catch(let error) {
           showAlert(for: (error as! ValidationError).message)
-          self.removeSpinner()
+         self.removeSpinner()
       }
 
     }
@@ -77,5 +85,5 @@ class ForgotPasswordViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    
 }
-

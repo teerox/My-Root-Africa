@@ -41,15 +41,18 @@ class TypeOfOccationViewController: UIViewController {
     var sendOthers = ""
     
     
+    var userName = ""
+    var userEmail = ""
+    var userToken = ""
+    var userContry = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(firstRecieved)
-        print(SecondRecieved)
-        print(thirdRecieved)
-        print(country)
         
     }
+    
     @IBAction func nextButton(_ sender: UIButton) {
         
         if (birthDay == "" && anniversary == "" && holidays == "" && others == "") {
@@ -166,6 +169,11 @@ class TypeOfOccationViewController: UIViewController {
             vc.toCreateAjob = SecondRecieved
             vc.gift = thirdRecieved
             vc.country = country
+        
+            vc.userName = userName
+           vc.userEmail = userEmail
+           vc.userToken = userToken
+           vc.userContry = userContry
     }
     
 }

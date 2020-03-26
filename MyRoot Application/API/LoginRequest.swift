@@ -8,9 +8,13 @@
 
 import Foundation
 
-struct LoginRequest {
+class LoginRequest{
+
+private init () {}
+
+static let shared = LoginRequest()
     
-    func save(urlString:String,user:Login){
+    func save(urlString:String,user:Login,onCompletion: @escaping (_ success: Bool, _ error: Error?, _ result: LoginSucessful?)->()){
         guard let urlData = URL(string: urlString) else {return}
         var request = URLRequest(url: urlData)
            request.httpMethod = "POST"
@@ -30,13 +34,15 @@ struct LoginRequest {
            let task = session.dataTask(with: request) { (responseData, response, responseError) in
                if responseError != nil{
                   print(responseError!)
+                 onCompletion(false, responseError, nil)
                    return
            }
                  if let safeData = responseData {
                           if let result = self.parseJSON(safeData){
-                            print("API AUT:\(result.payload.name)")
-                            let hashMap:[String:LoginSucessful] = ["result":result]
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notification"), object: nil, userInfo: hashMap)
+                            onCompletion(true, nil, result)
+                           // print("API AUT:\(result.payload.name)")
+//                            let hashMap:[String:LoginSucessful] = ["result":result]
+//                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notification"), object: nil, userInfo: hashMap)
                               }
                       }
            }
