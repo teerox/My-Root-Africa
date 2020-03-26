@@ -11,17 +11,23 @@ import UIKit
 
 class WhatTypeOfTreeViewController: UIViewController {
     
+     var ApiData = Utility()
+     //Type of Occasion
       var birthDayRecieved = ""
       var aniversaryRecieved = ""
       var holidaysRecieved = ""
       var othersRecieved = ""
       
+    
+      //Why plant a tree
       var climateAction = ""
       var toCreateAjob = ""
       var gift = ""
+    
+    
       var country = ""
       
-      
+      //How to plant
       var remote = ""
       var inPerson = ""
     
@@ -29,12 +35,23 @@ class WhatTypeOfTreeViewController: UIViewController {
       var decorativeTree = ""
       var fruitTree = ""
       var environmentalTree = ""
+    
+    
+      //Why Plant
       var sendDecorativeTree = ""
       var sendFruitTree = ""
       var sendEnvironmentalTree = ""
       
-        
     
+    var userName = ""
+    var userEmail = ""
+    var userToken = ""
+    var userContry = ""
+    var date = ""
+    var locationType = ""
+    var location = ""
+    var occation = ""
+    var isGift = false
   
       
     
@@ -48,18 +65,8 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            print("B:\(birthDayRecieved)")
-            print("A:\(aniversaryRecieved)")
-            print("H:\(holidaysRecieved)")
-            print("O:\(othersRecieved)")
-            print("C:\(climateAction)")
-            print("T:\(toCreateAjob)")
-            print("G:\(gift)")
-            print("C:\(country)")
-            print("R:\(remote)")
-            print("I:\(inPerson)")
         
-    
+            date = time()
     }
     
     
@@ -108,38 +115,12 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     
     @IBAction func submitButton(_ sender: UIButton) {
-        
-        
-        
-                if (environmentalTree == "" && fruitTree == "" && decorativeTree == "") {
-                       showAlert(for: "Select one")
-                }else if(environmentalTree != "" && fruitTree == "" && decorativeTree == ""){
-                      sendEnvironmentalTree = environmentalTree
-                     let allData = fullData(birthDayRecieved: birthDayRecieved, aniversaryRecieved: aniversaryRecieved, holidaysRecieved: holidaysRecieved, othersRecieved: othersRecieved, climateAction: climateAction, toCreateAjob: toCreateAjob, gift: gift, country: country, remote: remote, inPerson: inPerson, sendDecorativeTree: sendDecorativeTree, sendFruitTree: sendFruitTree, sendEnvironmentalTree: sendEnvironmentalTree)
-                      print("DataToSave:\(allData)")
-                      
-                      performSegue(withIdentifier: "moveTodashBoard", sender: self)
-                    
-                }else if(environmentalTree == "" && fruitTree != "" && decorativeTree == ""){
-                     sendFruitTree = fruitTree
-                      let allData = fullData(birthDayRecieved: birthDayRecieved, aniversaryRecieved: aniversaryRecieved, holidaysRecieved: holidaysRecieved, othersRecieved: othersRecieved, climateAction: climateAction, toCreateAjob: toCreateAjob, gift: gift, country: country, remote: remote, inPerson: inPerson, sendDecorativeTree: sendDecorativeTree, sendFruitTree: sendFruitTree, sendEnvironmentalTree: sendEnvironmentalTree)
-                    
-                      print("DataToSave:\(allData)")
-                      
-                      performSegue(withIdentifier: "moveTodashBoard", sender: self)
-                  
-                }else if(environmentalTree == "" && fruitTree == "" && decorativeTree != ""){
-                     sendDecorativeTree = decorativeTree
-                    
-                      let allData = fullData(birthDayRecieved: birthDayRecieved, aniversaryRecieved: aniversaryRecieved, holidaysRecieved: holidaysRecieved, othersRecieved: othersRecieved, climateAction: climateAction, toCreateAjob: toCreateAjob, gift: gift, country: country, remote: remote, inPerson: inPerson, sendDecorativeTree: sendDecorativeTree, sendFruitTree: sendFruitTree, sendEnvironmentalTree: sendEnvironmentalTree)
-                    
-                      print("DataToSave:\(allData)")
-                      
-                      performSegue(withIdentifier: "moveTodashBoard", sender: self)
-                }
-        
-  
+        typeOfTree()
+        saveAll()
+            
     }
+    
+    // performSegue(withIdentifier: "moveTodashBoard", sender: self)
     
     func showAlert(for alert: String) {
            let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
@@ -147,4 +128,113 @@ class WhatTypeOfTreeViewController: UIViewController {
            alertController.addAction(alertAction)
            present(alertController, animated: true, completion: nil)
        }
+    
+    
+    func time()->String {
+        // get the current date and time
+        let currentDateTime = Date()
+
+        // get the user's calendar
+        let userCalendar = Calendar.current
+
+        // choose which date and time components are needed
+        let requestedComponents: Set<Calendar.Component> = [
+            .year,
+            .month,
+            .day,
+            .hour,
+            .minute,
+            .second
+        ]
+        // get the components
+        let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
+        
+        
+        let year = dateTimeComponents.year
+        let month = dateTimeComponents.month
+        let day = dateTimeComponents.day
+        
+        let date = "\(day!)-\(month!)-\(year!)"
+        
+        return date
+    }
+    
+    
+    func typeOfTree(){
+        if (environmentalTree == "" && fruitTree == "" && decorativeTree == "") {
+                           showAlert(for: "Select one")
+                    }else if(environmentalTree != "" && fruitTree == "" && decorativeTree == ""){
+                          sendEnvironmentalTree = environmentalTree
+                  
+                    }else if(environmentalTree == "" && fruitTree != "" && decorativeTree == ""){
+                         sendFruitTree = fruitTree
+                         
+                      
+                    }else if(environmentalTree == "" && fruitTree == "" && decorativeTree != ""){
+                         sendDecorativeTree = decorativeTree
+                        
+                    }
+    }
+    
+    
+    
+    func  saveAll(){
+        self.showSpinner(onView: self.view)
+        if(gift != ""){
+        isGift = true
+
+        }
+        if(remote == "") {
+            locationType = "inPerson"
+        }else{
+            locationType = "Remote"
+        }
+        
+        if(birthDayRecieved == "" && aniversaryRecieved == "" && othersRecieved == "") {
+            occation = "HolidayRecieved"
+        }else if(birthDayRecieved == "" && aniversaryRecieved == "" && holidaysRecieved == "") {
+            occation = "Others"
+        }else if(othersRecieved == "" && aniversaryRecieved == "" && holidaysRecieved == "") {
+            occation = "BirthDay"
+        }else{
+             occation = "Anniversary"
+        }
+
+        let reason = Reason(isOccasion: false, isGift: isGift)
+        
+        let dataToSave = CompleteData(email: userEmail, name: userName, picture: "", locationType: locationType, reason: reason, occasion: occation, date: date, country: userContry, location: country, longitude: "", latitude: "")
+        let endpoint = "tree"
+        let url = "\(ApiData.API)\(endpoint)"
+        print(url)
+        SaveData.shared.save(urlString: url, token: userToken, completeData:dataToSave){
+            (success, error, result) in
+            if success {
+                         let response = result!
+                         let status = response.status
+                         let message = response.message
+                let data = response.payload
+                        
+                  if (status == 200){
+                   print("My Response:\(response)")
+                      DispatchQueue.main.async {
+                        print("theEnd:\(data)")
+                          self.removeSpinner()
+                          self.performSegue(withIdentifier: "moveTodashBoard", sender: self)
+                          self.showAlert(for: message)
+              
+                          }
+                      
+                  }else{
+                      DispatchQueue.main.async {
+                                 self.showAlert(for: message)
+                                 self.removeSpinner()
+                   }
+                  }
+              
+              }else{
+                  print(error!)
+              }
+            
+        }
+    }
 }

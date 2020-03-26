@@ -19,6 +19,12 @@ class WhereToPlantViewController: UIViewController {
     
     let listOfCountries = Country().getAfricanCountries()
     
+    
+    var userName = ""
+    var userEmail = ""
+    var userToken = ""
+    var userContry = ""
+    
    
     
     override func viewDidLoad() {
@@ -64,6 +70,11 @@ class WhereToPlantViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           let vc = segue.destination as! WhyPlantATreeViewController
         vc.countrySelected = whereToPlant
+        
+        vc.userName = userName
+        vc.userEmail = userEmail
+        vc.userToken = userToken
+        vc.userContry = userContry
         
     }
     

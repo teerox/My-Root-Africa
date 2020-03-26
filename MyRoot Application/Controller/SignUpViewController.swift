@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController{
             let userFullName = try self.fullName.validatedText(validationType: ValidatorType.fullname)
             let userPhoneNumber = try self.phoneNumber.validatedText(validationType: ValidatorType.phone)
             let userPassword = try self.password.validatedText(validationType: ValidatorType.password)
-            let userCountry = try self.countryList.validatedText(validationType: ValidatorType.phone)
+            let userCountry = try self.countryList.validatedText(validationType: ValidatorType.country)
             let data = RegisterData(name: userFullName, email: userEmail, password: userPassword, country: userCountry, phone: userPhoneNumber)
             let endPoint = "user"
             let url = "\(ApiData.API)\(endPoint)"
@@ -92,7 +92,7 @@ class SignUpViewController: UIViewController{
             }
         } catch(let error) {
             showAlert(for: (error as! ValidationError).message)
-            
+            self.removeSpinner()
         }
     }
     

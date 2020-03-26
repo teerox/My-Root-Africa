@@ -18,6 +18,11 @@ class SignInViewController: UIViewController {
     var activeField: UITextField?
     
     let userManager = UserManager()
+    var ApiData = Utility()
+    var clientName = ""
+    var clientEmail = ""
+    var clientToken = ""
+    var clientContry = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,27 +32,56 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
-        if(validate()){
-            
-        }
+    validate()
+      
     }
     
     
     
-    func validate()->Bool {
+    func validate(){
         self.showSpinner(onView: self.view)
         do {
             let userEmail = try loginEmail.validatedTexts(validationTypes: ValidatorType.email)
             let userPassword = try loginPassword.validatedTexts(validationTypes: ValidatorType.password)
-            let data = Login(email: userEmail, password: userPassword)
-            userManager.login(userData: data)
-            showAlert(for: "Login Successful")
-            return true
+            let endpoint = "user/login"
+            let url = "\(ApiData.API)\(endpoint)"
+             let data = Login(email: userEmail, password: userPassword)
+            LoginRequest.shared.save(urlString: url, user: data){ (success, error, result) in
+                if success {
+                           let response = result!
+                           let status = response.status!
+                           let message = response.message!
+                           print("Finally Done:\(response)")
+                    if (status == 200){
+                        print("My Response:\(response.payload!)")
+                        self.clientName = (response.payload?.name)!
+                        self.clientEmail = (response.payload?.email)!
+                        self.clientContry = (response.payload?.country)!
+                        self.clientToken = response.token!
+                        DispatchQueue.main.async {
+                            self.removeSpinner()
+                            self.performSegue(withIdentifier: "loginSuccessful", sender: self)
+                            self.showAlert(for: message)
+                
+                            }
+                        
+                    }else{
+                        DispatchQueue.main.async {
+                                       self.showAlert(for: message)
+                                        self.removeSpinner()
+                                       }
+                    }
+                
+                }else{
+                    print(error!)
+                }
+            }
         } catch(let error) {
             showAlert(for: (error as! ValidationError).message)
-            return false
+            self.removeSpinner()
         }
     }
+    
     
     
     
@@ -58,6 +92,19 @@ class SignInViewController: UIViewController {
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          
+          let vc = segue.destination as! DashBoardViewController
+        
+         vc.userName = clientName
+         vc.userEmail = clientEmail
+         vc.userToken = clientToken
+         vc.userContry = clientContry
+        
+      }
     
 }
 

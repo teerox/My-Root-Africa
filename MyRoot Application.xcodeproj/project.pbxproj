@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		063E38C74B3AF2118D387E4F /* Pods_MyRoot_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6487861BDAD724E95B9B3 /* Pods_MyRoot_Application.framework */; };
+		FA10C31F242B8133005AEEBD /* ForgotPasswordVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */; };
+		FA10C321242BA00C005AEEBD /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C320242BA00C005AEEBD /* ResetPassword.swift */; };
+		FA10C323242C0617005AEEBD /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C322242C0617005AEEBD /* SaveData.swift */; };
+		FA10C325242C272B005AEEBD /* GetallTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C324242C272B005AEEBD /* GetallTrees.swift */; };
+		FA5456EB242B74DF00073A24 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5456EA242B74DF00073A24 /* ForgotPassword.swift */; };
 		FA6545052421B6C9009332E6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6545042421B6C9009332E6 /* SignUpViewController.swift */; };
 		FA6545072421B6E4009332E6 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6545062421B6E4009332E6 /* SignInViewController.swift */; };
 		FA6545092421B719009332E6 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6545082421B719009332E6 /* VerificationViewController.swift */; };
@@ -46,6 +51,11 @@
 		61909C4A94B8EF045EF21295 /* Pods-MyRoot Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRoot Application.release.xcconfig"; path = "Target Support Files/Pods-MyRoot Application/Pods-MyRoot Application.release.xcconfig"; sourceTree = "<group>"; };
 		93C6487861BDAD724E95B9B3 /* Pods_MyRoot_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyRoot_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E695F9BC6019E9C5145A62 /* Pods-MyRoot Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRoot Application.debug.xcconfig"; path = "Target Support Files/Pods-MyRoot Application/Pods-MyRoot Application.debug.xcconfig"; sourceTree = "<group>"; };
+		FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVerification.swift; sourceTree = "<group>"; };
+		FA10C320242BA00C005AEEBD /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		FA10C322242C0617005AEEBD /* SaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveData.swift; sourceTree = "<group>"; };
+		FA10C324242C272B005AEEBD /* GetallTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetallTrees.swift; sourceTree = "<group>"; };
+		FA5456EA242B74DF00073A24 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		FA6545042421B6C9009332E6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FA6545062421B6E4009332E6 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		FA6545082421B719009332E6 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +213,7 @@
 				FA65451624221AB3009332E6 /* WhyPlantATreeViewController.swift */,
 				FA65451824221B52009332E6 /* HowToPlantATreeViewController.swift */,
 				FA65451A24221B75009332E6 /* WhatTypeOfTreeViewController.swift */,
+				FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -214,6 +225,10 @@
 				FA65452B24228518009332E6 /* SignUpApiRequest.swift */,
 				FA6545342423AB8B009332E6 /* AuthApiRequest.swift */,
 				FA654536242499B9009332E6 /* LoginRequest.swift */,
+				FA5456EA242B74DF00073A24 /* ForgotPassword.swift */,
+				FA10C320242BA00C005AEEBD /* ResetPassword.swift */,
+				FA10C322242C0617005AEEBD /* SaveData.swift */,
+				FA10C324242C272B005AEEBD /* GetallTrees.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -342,9 +357,12 @@
 				FA65451324221A48009332E6 /* TypeOfOccationViewController.swift in Sources */,
 				FAC2698B241A91FF00ECDCFB /* HomeViewController.swift in Sources */,
 				FAC26987241A91FF00ECDCFB /* AppDelegate.swift in Sources */,
+				FA10C325242C272B005AEEBD /* GetallTrees.swift in Sources */,
 				FA6545112421B7E5009332E6 /* DashBoardViewController.swift in Sources */,
 				FA65452F2422FCF7009332E6 /* OTPStackView.swift in Sources */,
 				FA65451F24224A68009332E6 /* AllCountriesAndCode.swift in Sources */,
+				FA5456EB242B74DF00073A24 /* ForgotPassword.swift in Sources */,
+				FA10C321242BA00C005AEEBD /* ResetPassword.swift in Sources */,
 				FA65453324239DC6009332E6 /* Utility.swift in Sources */,
 				FA65452A24226D15009332E6 /* UserManager.swift in Sources */,
 				FA6545352423AB8B009332E6 /* AuthApiRequest.swift in Sources */,
@@ -355,6 +373,8 @@
 				FA65451724221AB3009332E6 /* WhyPlantATreeViewController.swift in Sources */,
 				FA6545072421B6E4009332E6 /* SignInViewController.swift in Sources */,
 				FA6545312422FD3C009332E6 /* OTPTextField.swift in Sources */,
+				FA10C323242C0617005AEEBD /* SaveData.swift in Sources */,
+				FA10C31F242B8133005AEEBD /* ForgotPasswordVerification.swift in Sources */,
 				FA65451B24221B75009332E6 /* WhatTypeOfTreeViewController.swift in Sources */,
 				FAC26989241A91FF00ECDCFB /* SceneDelegate.swift in Sources */,
 				FA65451524221A73009332E6 /* WhereToPlantViewController.swift in Sources */,

@@ -27,6 +27,7 @@ enum ValidatorType {
     case country
     case requiredField(field: String)
     case phone
+    case codeValidator
 }
 
 enum VaildatorFactory {
@@ -38,6 +39,7 @@ enum VaildatorFactory {
         case .country: return CountryValidator()
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .phone: return PhoneNumberValidator()
+        case .codeValidator: return CodeValidator()
         }
     }
 }
@@ -46,6 +48,14 @@ enum VaildatorFactory {
 struct CountryValidator: ValidatorConvertible {
     func validated(_ value: String) throws -> String {
            guard value != "" else {throw ValidationError("Country is Required")}
+          return value
+      }
+}
+
+struct CodeValidator: ValidatorConvertible {
+    func validated(_ value: String) throws -> String {
+           guard value != "" else {throw ValidationError("Code is Required")}
+          guard value.count == 4 else {throw ValidationError("Invalid Code!")}
           return value
       }
 }

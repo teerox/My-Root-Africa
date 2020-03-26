@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
 //    @IBOutlet weak var signupButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // Do any additional setup after loading the view.
 //        signupButton.backgroundColor = UIColor(red: 0.40, green: 0.80, blue: 0.20, alpha: 1.0)
 //        signupButton.layer.cornerRadius = 30

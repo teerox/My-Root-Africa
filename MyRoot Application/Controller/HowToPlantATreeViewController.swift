@@ -27,6 +27,11 @@ class HowToPlantAViewController: UIViewController {
     var sendRemote = ""
     var sendInPerson = ""
     
+    
+    var userName = ""
+    var userEmail = ""
+    var userToken = ""
+    var userContry = ""
 
     @IBOutlet weak var remoteButtonoutlet: UIButton!
     
@@ -34,14 +39,6 @@ class HowToPlantAViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("B:\(birthDayRecieved)")
-        print("A:\(aniversaryRecieved)")
-        print("H:\(holidaysRecieved)")
-        print("O:\(othersRecieved)")
-        print("C:\(climateAction)")
-        print("T:\(toCreateAjob)")
-        print("G:\(gift)")
-        print("C:\(country)")
     }
     
     @IBAction func remoteButton(_ sender: UIButton) {
@@ -106,6 +103,10 @@ class HowToPlantAViewController: UIViewController {
         vc.remote = remote
         vc.toCreateAjob = toCreateAjob
         vc.othersRecieved = othersRecieved
+        vc.userName = userName
+        vc.userEmail = userEmail
+        vc.userToken = userToken
+        vc.userContry = userContry
     }
     
 

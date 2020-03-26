@@ -38,7 +38,7 @@ class Country {
                     
                 }
             }catch{
-                "Failed to decode country and code \(error.localizedDescription)"
+                print(error)
             }
             return returnList
         }
@@ -83,7 +83,7 @@ class Country {
                     
                 }
             }catch{
-                "Failed to decode country and code \(error.localizedDescription)"
+                print(error)
             }
             return returnList
         }
