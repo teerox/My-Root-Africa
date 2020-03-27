@@ -12,6 +12,12 @@ import iOSDropDown
 
 class WhereToPlantViewController: UIViewController {
 
+    @IBOutlet weak var the54Countries: UIButton!
+    
+    
+    @IBOutlet weak var theGreatWall: UIButton!
+    
+    
     
     @IBOutlet weak var listOfAfricanCountries: DropDown!
     
@@ -36,34 +42,52 @@ class WhereToPlantViewController: UIViewController {
     
 
     @IBAction func firstStackViewButton(_ sender: UIButton) {
-//        firstStackViewSelect.addBackground(color: .gray)
-//        secondStackViewSelect.addBackground(color: .white)
+
+        if sender.isSelected{
+                       sender.isSelected = false
+                        whereToPlant = ""
+                   }else{
+                       sender.isSelected = true
+            listOfAfricanCountries.isUserInteractionEnabled = true
+                theGreatWall.isSelected = false
+                   }
+        
     }
 
 
     @IBAction func secondStackViewButton(_ sender: UIButton) {
-//        firstStackViewSelect.addBackground(color: .white)
-//        secondStackViewSelect.addBackground(color: .gray)
+        if sender.isSelected{
+               sender.isSelected = false
+                whereToPlant = ""
+           }else{
+               sender.isSelected = true
+            listOfAfricanCountries.isUserInteractionEnabled = false
+           // textField.isUserInteractionEnabled = false
+            whereToPlant = "The Great Wall"
+            the54Countries.isSelected = false
+           }
     }
     
     
     
     @IBAction func nextButton(_ sender: UIButton) {
-        if(validate()){
+        if(whereToPlant == "The Great Wall"){
             performSegue(withIdentifier: "moveToWhyPlant", sender: self)
+        }else{
+            validate()
         }
     }
     
     
-    func validate()->Bool{
+    func validate(){
         do {
             let countrySelected = try self.listOfAfricanCountries.validatedText(validationType: ValidatorType.country)
             whereToPlant = countrySelected
-            print(whereToPlant)
-            return true
+          performSegue(withIdentifier: "moveToWhyPlant", sender: self)
+            
     } catch(let error) {
                showAlert(for: (error as! ValidationError).message)
-               return false
+               
            }
     }
     

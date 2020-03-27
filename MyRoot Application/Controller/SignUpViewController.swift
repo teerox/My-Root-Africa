@@ -71,7 +71,7 @@ class SignUpViewController: UIViewController{
                     if (status == 200) {
                         let token = response["token"] as! String
                         DispatchQueue.main.async {
-                            print("final tok\(token)")
+                      
                             self.tokenPassed = token
                             self.removeSpinner()
                             self.performSegue(withIdentifier: "moveToverification", sender: self)
@@ -87,7 +87,10 @@ class SignUpViewController: UIViewController{
                         }
                     }
                 } else {
-                    print("Failed ahh")
+                    DispatchQueue.main.async {
+                     self.showAlert(for: "Network Error...Please try Again")
+                      self.removeSpinner()
+                     }
                 }
             }
         } catch(let error) {
@@ -99,8 +102,11 @@ class SignUpViewController: UIViewController{
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! VerificationViewController
-        vc.userToken = tokenPassed    }
+        if (segue.identifier == "moveToverification") {
+            let vc = segue.destination as! VerificationViewController
+            vc.userToken = tokenPassed
+        }
+  }
     
     
     func showAlert(for alert: String) {
