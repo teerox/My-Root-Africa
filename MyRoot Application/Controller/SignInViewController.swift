@@ -26,8 +26,8 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginEmail.delegate = self
-        loginPassword.delegate = self
+      UserDefaults.standard.set(false, forKey: "loggedIn")
+      UserDefaults.standard.synchronize()
        
     }
     
@@ -49,17 +49,19 @@ class SignInViewController: UIViewController {
             LoginRequest.shared.save(urlString: url, user: data){ (success, error, result) in
                 if success {
                            let response = result!
-                           let status = response.status!
+                           let status = response.status
                            let message = response.message!
-                           print("Finally Done:\(response)")
+                         
                     if (status == 200){
-                        print("My Response:\(response.payload!)")
+                       
                         self.clientName = (response.payload?.name)!
                         self.clientEmail = (response.payload?.email)!
                         self.clientContry = (response.payload?.country)!
                         self.clientToken = response.token!
                         DispatchQueue.main.async {
                             self.removeSpinner()
+                            UserDefaults.standard.set(true, forKey: "loggedIn")
+                            UserDefaults.standard.synchronize()
                             self.performSegue(withIdentifier: "loginSuccessful", sender: self)
                             self.showAlert(for: message)
                 
@@ -74,6 +76,10 @@ class SignInViewController: UIViewController {
                 
                 }else{
                     print(error!)
+                    DispatchQueue.main.async {
+                      self.showAlert(for: "Network Error...Please try Again")
+                       self.removeSpinner()
+                      }
                 }
             }
         } catch(let error) {
@@ -97,12 +103,15 @@ class SignInViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
           
-          let vc = segue.destination as! DashBoardViewController
-        
-         vc.userName = clientName
-         vc.userEmail = clientEmail
-         vc.userToken = clientToken
-         vc.userContry = clientContry
+        if (segue.identifier == "loginSuccessful") {
+             let vc = segue.destination as! DashBoardViewController
+                   
+                    vc.userName = clientName
+                    vc.userEmail = clientEmail
+                    vc.userToken = clientToken
+                    vc.userContry = clientContry
+        }
+       
         
       }
     

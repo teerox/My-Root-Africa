@@ -41,6 +41,7 @@ class WhatTypeOfTreeViewController: UIViewController {
       var sendDecorativeTree = ""
       var sendFruitTree = ""
       var sendEnvironmentalTree = ""
+      var typeOfTree = ""
       
     
     var userName = ""
@@ -77,6 +78,7 @@ class WhatTypeOfTreeViewController: UIViewController {
                       }else{
                           sender.isSelected = true
                           decorativeTree = "Decorative Trees"
+                       
             fruitTreesOutlet.isSelected = false
             environmentalTreesOutlet.isSelected = false
                       }
@@ -90,6 +92,7 @@ class WhatTypeOfTreeViewController: UIViewController {
                       }else{
                           sender.isSelected = true
                           fruitTree = "Fruit Trees"
+                       
                       decorativeTreesOutlet.isSelected = false
                        environmentalTreesOutlet.isSelected = false
                       }
@@ -106,6 +109,7 @@ class WhatTypeOfTreeViewController: UIViewController {
                       }else{
                           sender.isSelected = true
                           environmentalTree = "Environmental Trees"
+                         
                           decorativeTreesOutlet.isSelected = false
                           fruitTreesOutlet.isSelected = false
                       }
@@ -115,7 +119,7 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     
     @IBAction func submitButton(_ sender: UIButton) {
-        typeOfTree()
+        typeOfTrees()
         saveAll()
             
     }
@@ -160,19 +164,20 @@ class WhatTypeOfTreeViewController: UIViewController {
     }
     
     
-    func typeOfTree(){
+    func typeOfTrees(){
         if (environmentalTree == "" && fruitTree == "" && decorativeTree == "") {
                            showAlert(for: "Select one")
                     }else if(environmentalTree != "" && fruitTree == "" && decorativeTree == ""){
                           sendEnvironmentalTree = environmentalTree
+                          typeOfTree = environmentalTree
                   
                     }else if(environmentalTree == "" && fruitTree != "" && decorativeTree == ""){
                          sendFruitTree = fruitTree
-                         
+                         typeOfTree = fruitTree
                       
                     }else if(environmentalTree == "" && fruitTree == "" && decorativeTree != ""){
                          sendDecorativeTree = decorativeTree
-                        
+                        typeOfTree = decorativeTree
                     }
     }
     
@@ -200,9 +205,10 @@ class WhatTypeOfTreeViewController: UIViewController {
              occation = "Anniversary"
         }
 
-        let reason = Reason(isOccasion: false, isGift: isGift)
+        let reason = Reason(isOcassion: false, isGift: isGift)
         
-        let dataToSave = CompleteData(email: userEmail, name: userName, picture: "", locationType: locationType, reason: reason, occasion: occation, date: date, country: userContry, location: country, longitude: "", latitude: "")
+        let dataToSave = CompleteData(email: userEmail, name: userName, picture: "", treeType: typeOfTree, locationType: locationType, reason: reason, occassion: occation, date: date, country: userContry, location: country, longitude: "", latitude: "")
+        print(dataToSave)
         let endpoint = "tree"
         let url = "\(ApiData.API)\(endpoint)"
         print(url)
@@ -233,6 +239,10 @@ class WhatTypeOfTreeViewController: UIViewController {
               
               }else{
                   print(error!)
+                DispatchQueue.main.async {
+             self.showAlert(for: "Network Error...Please try Again")
+              self.removeSpinner()
+             }
               }
             
         }

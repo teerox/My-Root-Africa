@@ -135,26 +135,26 @@ struct fullData {
     let sendEnvironmentalTree: String
 }
 
-struct CompleteData: Codable {
-    let email:String
-    let name:String
-    let picture:String
-    let locationType:String
-    let reason:Reason
-    let occasion:String
-    let date:String
-    let country:String
-    let location:String
-    let longitude:String
-    let latitude:String
-
-}
-
-struct Reason: Codable {
-   let isOccasion:Bool
-   let isGift:Bool
-    
-}
+//struct CompleteData: Codable {
+//    let email:String
+//    let name:String
+//    let picture:String
+//    let locationType:String
+//    let reason:Reason
+//    let occasion:String
+//    let date:String
+//    let country:String
+//    let location:String
+//    let longitude:String
+//    let latitude:String
+//
+//}
+//
+//struct Reason: Codable {
+//   let isOccasion:Bool
+//   let isGift:Bool
+//
+//}
 
 
 
@@ -173,4 +173,21 @@ struct AllPayload: Codable {
     let picture: String
     let createdAt, updatedAt: String
 
+}
+
+
+
+// MARK: - Welcome
+struct CompleteData: Codable {
+    let email, name: String
+    let picture: String
+    let treeType, locationType: String
+    let reason: Reason
+    let occassion, date, country, location: String
+    let longitude, latitude: String
+}
+
+// MARK: - Reason
+struct Reason: Codable {
+    let isOcassion, isGift: Bool
 }

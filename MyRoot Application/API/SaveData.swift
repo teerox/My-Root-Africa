@@ -23,7 +23,7 @@ class SaveData{
         request.httpMethod = "POST"
 
         var headers = request.allHTTPHeaderFields ?? [:]
-        
+       // print("TOKEN:\(token)")
         headers["Authorization"] = "Bearer \(token)"
         //headers["Content-Type"] = "application/json"
         request.allHTTPHeaderFields = headers

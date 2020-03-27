@@ -10,21 +10,20 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-//    @IBOutlet weak var loginButton: UIButton!
-//    @IBOutlet weak var signupButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        // Do any additional setup after loading the view.
-//        signupButton.backgroundColor = UIColor(red: 0.40, green: 0.80, blue: 0.20, alpha: 1.0)
-//        signupButton.layer.cornerRadius = 30
-//
-//        loginButton.backgroundColor = UIColor(red: 0.76, green: 0.86, blue: 0.00, alpha: 1.0)
-//        loginButton.layer.cornerRadius = 30
+ 
+        if(isLoggedIn()){
+             self.performSegue(withIdentifier: "moveingToDashBoadFromHome", sender: self)
 
-        
+        }
+ 
     }
 
-
+    fileprivate func isLoggedIn()->Bool{
+        return UserDefaults.standard.bool(forKey: "loggedIn")
+    }
+    
 }
 
