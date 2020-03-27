@@ -66,7 +66,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MyU-hd-nFp"/>
                     <connections>
-                        <segue destination="LIA-Ib-jD6" kind="show" identifier="moveingToDashBoadFromHome" id="Z2q-xt-JOk"/>
+                        <segue destination="UyJ-D5-s28" kind="show" identifier="moveingToDashBoadFromHome" id="Z2q-xt-JOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -338,7 +338,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LIA-Ib-jD6" kind="show" id="qaS-2n-BDd"/>
+                                    <segue destination="UyJ-D5-s28" kind="show" id="qaS-2n-BDd"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Verification successful" translatesAutoresizingMaskIntoConstraints="NO" id="F7u-qX-JHG">
@@ -470,7 +470,7 @@ please login with your data</string>
                     <connections>
                         <outlet property="loginEmail" destination="Slt-X7-Ksa" id="y9e-Ad-70Z"/>
                         <outlet property="loginPassword" destination="gQd-n5-bRs" id="wJZ-HS-yMH"/>
-                        <segue destination="LIA-Ib-jD6" kind="show" identifier="loginSuccessful" id="04R-JV-XuG"/>
+                        <segue destination="UyJ-D5-s28" kind="show" identifier="loginSuccessful" id="04R-JV-XuG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4H-Vb-eH1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -562,26 +562,26 @@ please login with your data</string>
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="fEG-50-jG1" customClass="SettingsViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kow-wx-rXY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ftd-dP-cdd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YFy-8Y-srk">
-                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                                <rect key="frame" x="16" y="56" width="343" height="591"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="aVp-jq-I1S">
-                                        <rect key="frame" x="26.5" y="0.0" width="290" height="667"/>
+                                        <rect key="frame" x="26.5" y="0.0" width="290" height="591"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIB-yV-x1V">
-                                                <rect key="frame" x="0.0" y="0.0" width="290" height="169"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="290" height="93"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="W7x-ye-XSH">
-                                                <rect key="frame" x="0.0" y="201" width="290" height="340"/>
+                                                <rect key="frame" x="0.0" y="125" width="290" height="340"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dv1-5v-F98">
                                                         <rect key="frame" x="0.0" y="0.0" width="290" height="34"/>
@@ -641,7 +641,7 @@ please login with your data</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pfj-sZ-sXP">
-                                                <rect key="frame" x="0.0" y="573" width="290" height="94"/>
+                                                <rect key="frame" x="0.0" y="497" width="290" height="94"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="4Ba-Ly-jh2">
                                                         <rect key="frame" x="0.0" y="0.0" width="290" height="94"/>
@@ -713,14 +713,14 @@ CE5ld3NsZXR0ZXI
             <objects>
                 <viewController storyboardIdentifier="DashBoardViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LIA-Ib-jD6" customClass="DashBoardViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LAX-HB-22X">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dashboard_bg" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-bC-mnu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="167" translatesAutoresizingMaskIntoConstraints="NO" id="jHc-5z-eed">
-                                <rect key="frame" x="-51.5" y="-56" width="478" height="779"/>
+                                <rect key="frame" x="-51.5" y="-66" width="478" height="779"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a7O-Hq-PcP">
                                         <rect key="frame" x="0.0" y="0.0" width="426" height="358.5"/>
@@ -915,18 +915,18 @@ CE5ld3NsZXR0ZXI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z66-go-Xwj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5341" y="1855"/>
+            <point key="canvasLocation" x="5420" y="2844"/>
         </scene>
         <!--Where To Plant View Controller-->
         <scene sceneID="DOI-21-Wiz">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="6lv-GN-hc2" customClass="WhereToPlantViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R3Z-Mu-axc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="t2c-mR-R2w">
-                                <rect key="frame" x="-79.5" y="-62" width="534" height="791"/>
+                                <rect key="frame" x="-79.5" y="-72" width="534" height="791"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="EoX-DM-Z22">
                                         <rect key="frame" x="84" y="0.0" width="366" height="151"/>
@@ -1004,7 +1004,7 @@ CE5ld3NsZXR0ZXI
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="where_to_plant_bg" translatesAutoresizingMaskIntoConstraints="NO" id="to7-fZ-BXg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1028,18 +1028,18 @@ CE5ld3NsZXR0ZXI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDN-sp-oBf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6151" y="1854"/>
+            <point key="canvasLocation" x="7088.8000000000002" y="1853.5232383808097"/>
         </scene>
         <!--Why PlantA Tree View Controller-->
         <scene sceneID="wBL-MW-901">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="LW1-FO-n8X" customClass="WhyPlantATreeViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzK-mP-6ch">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="iUY-WN-XMk">
-                                <rect key="frame" x="-51.5" y="-56.5" width="478" height="780"/>
+                                <rect key="frame" x="-51.5" y="-66.5" width="478" height="780"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Why plant a tree" translatesAutoresizingMaskIntoConstraints="NO" id="ry9-Un-kNf">
                                         <rect key="frame" x="33" y="0.0" width="412" height="46"/>
@@ -1185,7 +1185,7 @@ CE5ld3NsZXR0ZXI
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="why_bg" translatesAutoresizingMaskIntoConstraints="NO" id="qrP-zR-w3D">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1206,21 +1206,21 @@ CE5ld3NsZXR0ZXI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLj-8R-NnP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7009" y="1854"/>
+            <point key="canvasLocation" x="7948" y="1853.5232383808097"/>
         </scene>
         <!--Type Of Occation View Controller-->
         <scene sceneID="CRC-bO-fwR">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="96R-Tp-8La" customClass="TypeOfOccationViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VH6-0M-L6h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ocassiontype" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-hl-BOA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="bzU-lI-xfS">
-                                <rect key="frame" x="5.5" y="47" width="364" height="573.5"/>
+                                <rect key="frame" x="5.5" y="37" width="364" height="573.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Type of occasion" translatesAutoresizingMaskIntoConstraints="NO" id="BYW-ug-09t">
                                         <rect key="frame" x="76.5" y="0.0" width="211" height="23"/>
@@ -1360,18 +1360,18 @@ CE5ld3NsZXR0ZXI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdn-TS-1XA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7962" y="1854"/>
+            <point key="canvasLocation" x="8900" y="1853.5232383808097"/>
         </scene>
         <!--How To PlantA View Controller-->
         <scene sceneID="b8n-Nc-4et">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="bC2-Um-Eyu" customClass="HowToPlantAViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="65A-yO-OEa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="5LL-t6-Z2b">
-                                <rect key="frame" x="-96.5" y="-54" width="568" height="775"/>
+                                <rect key="frame" x="-96.5" y="-64" width="568" height="775"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pZX-N6-ybQ">
                                         <rect key="frame" x="45" y="0.0" width="478" height="133"/>
@@ -1461,18 +1461,18 @@ CE5ld3NsZXR0ZXI
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82j-NP-3c3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8818" y="1644"/>
+            <point key="canvasLocation" x="9756" y="1643.9280359820091"/>
         </scene>
         <!--What Type Of Tree View Controller-->
         <scene sceneID="3jp-hd-rxX">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="F4R-Ac-Zi4" customClass="WhatTypeOfTreeViewController" customModule="MyRoot_Application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wxw-36-kDf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="JED-W9-ior">
-                                <rect key="frame" x="-51.5" y="-51" width="478" height="769"/>
+                                <rect key="frame" x="-51.5" y="-61" width="478" height="769"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="UOP-zQ-cyO">
                                         <rect key="frame" x="103" y="0.0" width="272" height="81.5"/>
@@ -1581,19 +1581,20 @@ CE5ld3NsZXR0ZXI
                         <outlet property="decorativeTreesOutlet" destination="mWe-Aw-TUy" id="EUP-0m-owv"/>
                         <outlet property="environmentalTreesOutlet" destination="cGB-q1-zSN" id="OQf-Q2-KPx"/>
                         <outlet property="fruitTreesOutlet" destination="61r-R7-4Q1" id="EfG-R9-NAO"/>
-                        <segue destination="LIA-Ib-jD6" kind="show" identifier="moveTodashBoard" id="CyA-LU-KVc"/>
+                        <segue destination="UyJ-D5-s28" kind="show" identifier="moveTodashBoard" id="CyA-LU-KVc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgF-GV-dsF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9772" y="1643.9280359820091"/>
+            <point key="canvasLocation" x="10711.200000000001" y="1643.9280359820091"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Root In Africa-->
         <scene sceneID="Wcj-kH-fdk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbB-6i-CT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qgW-ZQ-8p3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="P5t-MQ-Pxe"/>
+                    <navigationItem key="navigationItem" title="My Root In Africa" id="P5t-MQ-Pxe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UQF-tm-Yee">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1606,7 +1607,6 @@ CE5ld3NsZXR0ZXI
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8du-gc-bUE"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mbB-6i-CT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2645" y="401"/>
         </scene>
@@ -1736,6 +1736,25 @@ CE5ld3NsZXR0ZXI
             </objects>
             <point key="canvasLocation" x="7297" y="930"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ayu-oL-6An">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="UyJ-D5-s28" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Tc9-1p-RuX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VPO-ep-IOB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LIA-Ib-jD6" kind="relationship" relationship="rootViewController" id="aNM-eI-oT6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QyR-VF-uc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5420" y="1982"/>
+        </scene>
     </scenes>
     <resources>
         <image name="13" width="51" height="51"/>
@@ -1787,6 +1806,6 @@ CE5ld3NsZXR0ZXI
     <inferredMetricsTieBreakers>
         <segue reference="04R-JV-XuG"/>
         <segue reference="hkf-RC-4DS"/>
-        <segue reference="nBu-Ls-XsH"/>
+        <segue reference="gfP-v1-nld"/>
     </inferredMetricsTieBreakers>
 </document>

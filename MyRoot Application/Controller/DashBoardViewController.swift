@@ -11,6 +11,7 @@ import UIKit
 
 class DashBoardViewController: UIViewController {
     
+
     @IBOutlet weak var timeAndName: UILabel!
     
     @IBOutlet weak var fullName: UILabel!
@@ -29,10 +30,16 @@ class DashBoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         time()
+        
+        userName = UserDefaults.standard.string(forKey: "name")!
+        userEmail = UserDefaults.standard.string(forKey: "email")!
+        userContry = UserDefaults.standard.string(forKey: "country")!
+        userToken = UserDefaults.standard.string(forKey: "token")!
         fullName.text = userName
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
     }
+  
 
     func time(){
         // get the current date and time
@@ -43,29 +50,18 @@ class DashBoardViewController: UIViewController {
 
         // choose which date and time components are needed
         let requestedComponents: Set<Calendar.Component> = [
-            .year,
-            .month,
-            .day,
-            .hour,
-            .minute,
-            .second
-        ]
+            .year,.month,.day,.hour,.minute,.second]
         // get the components
         let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-        
-        
-       // let time = "\(dateTimeComponents.hour!):\(dateTimeComponents.minute!)"
-        
-        
         if (dateTimeComponents.hour! >= 00 && dateTimeComponents.hour! < 12 ) {
 
-            timeAndName.text = "Good Morning!"
-            
+            timeAndName.text = "Good Morning"
+
         }else if (dateTimeComponents.hour! >= 12 && dateTimeComponents.hour! < 16 ) {
 
-            timeAndName.text = "Good Afternoon!"
+            timeAndName.text = "Good Afternoon"
         }else{
-            timeAndName.text = "Good Evening!"
+            timeAndName.text = "Good Evening"
         }
     }
     
@@ -78,12 +74,11 @@ class DashBoardViewController: UIViewController {
                    vc.userToken = userToken
                    vc.userContry = userContry
         }
-   
 
-        
      }
-//
+
     override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
            // 1
           let nav = self.navigationController?.navigationBar
 
@@ -91,15 +86,13 @@ class DashBoardViewController: UIViewController {
           nav?.barStyle = UIBarStyle.black
           nav?.tintColor = UIColor.yellow
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: "textMove", sender: self)
-//        UserDefaults.standard.set(false, forKey: "loggedIn")
-//        UserDefaults.standard.synchronize()
-//        dismiss(animated: true, completion: nil)
-
-                    self.loadLoginScreen()
+        self.loadLoginScreen()
                 
     }
     
@@ -109,16 +102,12 @@ class DashBoardViewController: UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
     
-//    func displayErrorMessage(message:String) {
-//        let alertView = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-//        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-//        }
-//        alertView.addAction(OKAction)
-//        if let presenter = alertView.popoverPresentationController {
-//            presenter.sourceView = self.view
-//            presenter.sourceRect = self.view.bounds
-//        }
-//        self.present(alertView, animated: true, completion:nil)
-//    }
-    
+//    func sendDataToFirstViewController(myData: SendData) {
+//        print("token\(myData.token)")
+//        userName = myData.name
+//        userEmail = myData.email
+//        userToken = myData.token
+//        userContry = myData.country
+//       }
+
 }

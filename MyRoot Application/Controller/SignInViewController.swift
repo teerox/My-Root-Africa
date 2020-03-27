@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
+
+protocol MyDataSendingDelegateProtocol {
+    func sendDataToFirstViewController(myData: SendData)
+}
+
 class SignInViewController: UIViewController {
     
+    var delegate: MyDataSendingDelegateProtocol?
 
     @IBOutlet weak var loginPassword: UITextField!
     
@@ -24,6 +30,8 @@ class SignInViewController: UIViewController {
     var clientToken = ""
     var clientContry = ""
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       UserDefaults.standard.set(false, forKey: "loggedIn")
@@ -33,6 +41,8 @@ class SignInViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: UIButton) {
     validate()
+       
+     
       
     }
     
@@ -58,11 +68,27 @@ class SignInViewController: UIViewController {
                         self.clientEmail = (response.payload?.email)!
                         self.clientContry = (response.payload?.country)!
                         self.clientToken = response.token!
+                        print("UserToks:\(response.token!)")
+                        UserDefaults.standard.set((response.payload?.name)!, forKey: "name")
+                         UserDefaults.standard.set((response.payload?.email)!, forKey: "email")
+                         UserDefaults.standard.set((response.payload?.country)!, forKey: "country")
+                         UserDefaults.standard.set(response.token!, forKey: "token")
+//                        
+                        
+                        
+                        
+                        let all = SendData(name: (response.payload?.name)!, email: (response.payload?.email)!, token: response.token!, country: (response.payload?.country)!)
+                        
+                            let dataToBeSent = all
+                            self.delegate?.sendDataToFirstViewController(myData: dataToBeSent)
+                          
+                        
                         DispatchQueue.main.async {
                             self.removeSpinner()
                             UserDefaults.standard.set(true, forKey: "loggedIn")
                             UserDefaults.standard.synchronize()
                             self.performSegue(withIdentifier: "loginSuccessful", sender: self)
+                            
                             self.showAlert(for: message)
                 
                             }
@@ -88,9 +114,7 @@ class SignInViewController: UIViewController {
         }
     }
     
-    
-    
-    
+
     
     func showAlert(for alert: String) {
         let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
@@ -101,19 +125,19 @@ class SignInViewController: UIViewController {
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-          
-        if (segue.identifier == "loginSuccessful") {
-             let vc = segue.destination as! DashBoardViewController
-                   
-                    vc.userName = clientName
-                    vc.userEmail = clientEmail
-                    vc.userToken = clientToken
-                    vc.userContry = clientContry
-        }
-       
-        
-      }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+////        if (segue.identifier == "loginSuccessful") {
+////             let vc = segue.destination as! DashBoardViewController
+////
+////                    vc.userName = clientName
+////                    vc.userEmail = clientEmail
+////                    vc.userToken = clientToken
+////                    vc.userContry = clientContry
+////        }
+//
+//
+//      }
     
 }
 

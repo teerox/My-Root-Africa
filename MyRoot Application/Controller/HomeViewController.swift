@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        
         if(isLoggedIn()){
              self.performSegue(withIdentifier: "moveingToDashBoadFromHome", sender: self)
 

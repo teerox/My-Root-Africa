@@ -38,6 +38,7 @@
 		FA65453324239DC6009332E6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65453224239DC6009332E6 /* Utility.swift */; };
 		FA6545352423AB8B009332E6 /* AuthApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6545342423AB8B009332E6 /* AuthApiRequest.swift */; };
 		FA654537242499B9009332E6 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA654536242499B9009332E6 /* LoginRequest.swift */; };
+		FA7FDDCA242E097100FEC9DD /* navController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7FDDC9242E097100FEC9DD /* navController.swift */; };
 		FAC26987241A91FF00ECDCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC26986241A91FF00ECDCFB /* AppDelegate.swift */; };
 		FAC26989241A91FF00ECDCFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC26988241A91FF00ECDCFB /* SceneDelegate.swift */; };
 		FAC2698B241A91FF00ECDCFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2698A241A91FF00ECDCFB /* HomeViewController.swift */; };
@@ -81,6 +82,7 @@
 		FA65453224239DC6009332E6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA6545342423AB8B009332E6 /* AuthApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiRequest.swift; sourceTree = "<group>"; };
 		FA654536242499B9009332E6 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		FA7FDDC9242E097100FEC9DD /* navController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navController.swift; sourceTree = "<group>"; };
 		FAC26983241A91FF00ECDCFB /* MyRoot Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyRoot Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC26986241A91FF00ECDCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC26988241A91FF00ECDCFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				FA65451824221B52009332E6 /* HowToPlantATreeViewController.swift */,
 				FA65451A24221B75009332E6 /* WhatTypeOfTreeViewController.swift */,
 				FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */,
+				FA7FDDC9242E097100FEC9DD /* navController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				FA6545092421B719009332E6 /* VerificationViewController.swift in Sources */,
 				FA65452124224B05009332E6 /* Country.swift in Sources */,
 				FA65451324221A48009332E6 /* TypeOfOccationViewController.swift in Sources */,
+				FA7FDDCA242E097100FEC9DD /* navController.swift in Sources */,
 				FAC2698B241A91FF00ECDCFB /* HomeViewController.swift in Sources */,
 				FAC26987241A91FF00ECDCFB /* AppDelegate.swift in Sources */,
 				FA10C325242C272B005AEEBD /* GetallTrees.swift in Sources */,

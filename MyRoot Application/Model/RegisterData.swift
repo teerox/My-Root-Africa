@@ -191,3 +191,11 @@ struct CompleteData: Codable {
 struct Reason: Codable {
     let isOcassion, isGift: Bool
 }
+
+
+struct SendData {
+      var name: String
+      var email: String
+      var token: String
+      var country: String
+}
