@@ -38,7 +38,7 @@ struct Message:Codable {
 }
 
 struct Auth:Codable {
-    var code:String
+    var code = "5855"
 }
 
 
@@ -46,7 +46,7 @@ struct Auth:Codable {
 
 
 // MARK: - Welcome
-struct Welcome: Codable {
+struct Welcome: Decodable {
     let status: Int?
     let message: String?
     let payload: Payload?
@@ -160,36 +160,83 @@ struct fullData {
 
 // MARK: - Welcome
 struct AllUserInput: Codable {
-    let status: Int
-    let message: String
-    let payload: AllPayload
+    let status: Int?
+    let message: String?
+    let payload: AllPayload?
 }
 
 // MARK: - Payload
 struct AllPayload: Codable {
-    let date, id, userid, type: String
-    let payloadDescription, country: String
-    let longitude, latitude: Int
-    let picture: String
-    let createdAt, updatedAt: String
+    let date, id, userid, treeType: String?
+    let locationType, country: String?
+    let longitude, latitude: Int?
+    let picture: String?
+    let createdAt, updatedAt: String?
 
 }
+
+
+// MARK: - Welcome
+struct AllUserInput2: Codable {
+    let status: Int?
+    let message: String?
+    let payload: Countries?
+}
+
+struct Countries:Codable  {
+    let pm:AllPayload2
+}
+
+// MARK: - Payload
+struct AllPayload2: Codable {
+    let date, id, userid, treeType: String?
+    let locationType, country: String?
+    let longitude, latitude: Int?
+    let picture: String?
+    let createdAt, updatedAt: String?
+
+}
+
+
+
 
 
 
 // MARK: - Welcome
-struct CompleteData: Codable {
-    let email, name: String
-    let picture: String
-    let treeType, locationType: String
-    let reason: Reason
-    let occassion, date, country, location: String
-    let longitude, latitude: String
-}
+struct CompleteData: Codable{
+    let email, name: String?
+    let treeType, locationType: String?
+    let reason: String?
+    let occassion, date, country, location: String?
+    let longitude, latitude: String?
+    
+    // MARK: - Reason
 
-// MARK: - Reason
-struct Reason: Codable {
-    let isOcassion, isGift: Bool
+  
+ 
+    
+    
+//
+//    var dictionaryRepresentation: [String: Any] {
+//        return [
+//          "email" : email,
+//          "name" : name,
+//          "picture" : picture,
+//          "treeType" : treeType,
+//          "locationType" : locationType,
+//          "reason" : [
+//            "isOcassion":reason.isOcassion,
+//            "isGift":reason.isGift
+//          ],
+//          "occassion" : occassion,
+//          "date" : date,
+//          "country" : country,
+//                 "location" : location,
+//                 "latitude" : latitude
+//
+//        ]
+//
+//    }
 }
 
 
@@ -199,3 +246,100 @@ struct SendData {
       var token: String
       var country: String
 }
+
+
+struct Check: Codable {
+    let email, name: String
+    let picture: String
+    let treeType, locationType, reason, occassion: String
+    let date, country, location, longitude: String
+    let latitude: String
+}
+
+
+struct Tree:Encodable {
+    var name:String?
+    var email:String?
+    var picture: String?
+    var treeType: String?
+    var locationType: String?
+    var reason: Reason?
+    var occasion: String?
+    var date: String?
+    var country: String?
+    var location: String?
+    var longitude: String?=""
+    var latitude: String?=""
+    var token:String?
+    var new:Bool? = false
+}
+
+struct Reason:Encodable {
+    var isOccasion:Bool = false
+    var isGift: Bool = false
+}
+
+
+struct AllTrees: Codable {
+    let status: Int?
+    let message: String?
+    let payload: Trees?
+}
+
+// MARK: - Payload
+struct Trees: Codable {
+    let countries: [TreeCountry]?
+    let greenWall: [TreeCountry]?
+}
+
+// MARK: - Country
+struct TreeCountry: Codable {
+    let locationType, id: String?
+    let longitude: Int?
+    let picture: String?
+    let latitude: Int?
+    let reason:Reason2?
+    let treeType, country, userid: String?
+    let createdAt, updatedAt: String?
+    let v: Int?
+
+
+}
+
+struct Reason2:Codable {
+    var isOccasion:Bool?
+    var isGift: Bool?
+}
+
+
+
+
+
+
+struct AllTreesGotten: Codable {
+    let status: Int?
+    let message: String?
+    let payload: EachTree?
+}
+
+// MARK: - Payload
+struct EachTree: Codable {
+    let countries, greenWall: [EachTreeCountry]?
+}
+
+// MARK: - Country
+struct EachTreeCountry: Codable {
+    let locationType, id: String?
+    let longitude: Int?
+    let picture: String?
+    let latitude: Int?
+    let reason: MainReason?
+    let treeType, country, userid, createdAt: String?
+    let updatedAt: String?
+    let v: Int?
+}
+
+struct MainReason: Codable {
+    let isOccasion, isGift: Bool?
+}
+

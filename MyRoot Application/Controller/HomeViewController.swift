@@ -14,12 +14,22 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
  
+        title = "My Root In Africa"
         
         if(isLoggedIn()){
              self.performSegue(withIdentifier: "moveingToDashBoadFromHome", sender: self)
 
         }
  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
 
     fileprivate func isLoggedIn()->Bool{

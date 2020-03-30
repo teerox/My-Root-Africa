@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+
 
 class WhatTypeOfTreeViewController: UIViewController {
     
@@ -22,8 +24,8 @@ class WhatTypeOfTreeViewController: UIViewController {
       //Why plant a tree
       var climateAction = ""
       var toCreateAjob = ""
-      var gift = ""
-    
+       var gift = ""
+     //
     
       var country = ""
       
@@ -49,12 +51,16 @@ class WhatTypeOfTreeViewController: UIViewController {
     var userToken = ""
     var userContry = ""
     var date = ""
-    var locationType = ""
+    
+    
+    //inperson or remote->location
     var location = ""
     var occation = ""
-    var isGift = false
+    var reason = ""
   
-      
+    
+    var whrToPlant = ""
+    var isGift = false
     
     @IBOutlet weak var decorativeTreesOutlet: UIButton!
     
@@ -62,6 +68,8 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     @IBOutlet weak var environmentalTreesOutlet: UIButton!
     
+    
+    var disposedBag = DisposeBag()
     
     
     override func viewDidLoad() {
@@ -78,7 +86,8 @@ class WhatTypeOfTreeViewController: UIViewController {
                       }else{
                           sender.isSelected = true
                           decorativeTree = "Decorative Trees"
-                       
+                             fruitTree = ""
+                             environmentalTree = ""
             fruitTreesOutlet.isSelected = false
             environmentalTreesOutlet.isSelected = false
                       }
@@ -92,6 +101,8 @@ class WhatTypeOfTreeViewController: UIViewController {
                       }else{
                           sender.isSelected = true
                           fruitTree = "Fruit Trees"
+                        decorativeTree = ""
+                       environmentalTree = ""
                        
                       decorativeTreesOutlet.isSelected = false
                        environmentalTreesOutlet.isSelected = false
@@ -119,7 +130,7 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     
     @IBAction func submitButton(_ sender: UIButton) {
-        typeOfTrees()
+       
         saveAll()
             
     }
@@ -184,15 +195,30 @@ class WhatTypeOfTreeViewController: UIViewController {
     
     
     func  saveAll(){
+         typeOfTrees()
         self.showSpinner(onView: self.view)
         if(gift != ""){
-        isGift = true
+               isGift = true
 
-        }
+               }
+//        if(climateAction == "" && toCreateAjob == ""){
+//        reason = "isGift"
+//
+//        }
+//        if(gift == "" && toCreateAjob == ""){
+//               reason = "climateAction"
+//
+//               }
+//        
+//        if(gift == "" && climateAction == ""){
+//               reason = "toCreateAjob"
+//
+//               }
+        
         if(remote == "") {
-            locationType = "inPerson"
+            location = "inPerson"
         }else{
-            locationType = "Remote"
+            location = "Remote"
         }
         
         if(birthDayRecieved == "" && aniversaryRecieved == "" && othersRecieved == "") {
@@ -204,47 +230,50 @@ class WhatTypeOfTreeViewController: UIViewController {
         }else{
              occation = "Anniversary"
         }
-
-        let reason = Reason(isOcassion: false, isGift: isGift)
         
-        let dataToSave = CompleteData(email: userEmail, name: userName, picture: "", treeType: typeOfTree, locationType: locationType, reason: reason, occassion: occation, date: date, country: userContry, location: country, longitude: "", latitude: "")
-        print(dataToSave)
+         if (country == "The Great Wall"){
+            whrToPlant = "GGW"
+         }else{
+            whrToPlant = "54C"
+        }
+        
+        let reason = Reason(isOccasion: false, isGift: isGift)
+       
+    let tree = Tree(name: userName, email: userEmail, picture: "", treeType: typeOfTree, locationType: whrToPlant, reason: reason, occasion: occation, date: date, country: userContry, location: location, longitude: "", latitude: "", token: userToken, new: true)
+        
+
+        guard let token = tree.token else {
+               fatalError("Invalid authorization")
+           }
+
+        
         let endpoint = "tree"
         let url = "\(ApiData.API)\(endpoint)"
-        print(url)
-        SaveData.shared.save(urlString: url, token: userToken, completeData:dataToSave){
-            (success, error, result) in
-            if success {
-                         let response = result!
-                         let status = response.status
-                         let message = response.message
-                let data = response.payload
-                        
-                  if (status == 200){
-                   print("My Response:\(response)")
-                      DispatchQueue.main.async {
-                        print("theEnd:\(data)")
-                          self.removeSpinner()
-                          self.performSegue(withIdentifier: "moveTodashBoard", sender: self)
-                          self.showAlert(for: message)
-              
-                          }
-                      
-                  }else{
-                      DispatchQueue.main.async {
-                                 self.showAlert(for: message)
-                                 self.removeSpinner()
-                   }
-                  }
-              
-              }else{
-                  print(error!)
-                DispatchQueue.main.async {
-             self.showAlert(for: "Network Error...Please try Again")
-              self.removeSpinner()
-             }
-              }
+
+        SaveData.shared.reserveTree(urlString: url, tree: tree, token: token).subscribe(onNext:{(AllUserInput) in
+           // print("messaage \(String(describing: AllUserInput.message))")
+            self.showSpinner(onView: self.view)
+            if AllUserInput.status == 200{
+               //  print("messaagesss: \(AllUserInput))")
+                self.performSegue(withIdentifier: "moveTodashBoard", sender: self)
+                self.showAlert(for: AllUserInput.message!)
+                //perform segue
+                
+            }else{
+                self.showAlert(for: AllUserInput.message!)
+            }
             
-        }
+        },onError: { (Error) in
+            //self.progressSpinner.isHidden = true
+           // self.submitButton.isHidden = false
+            print("Error: \(String(describing: Error.asAFError))")
+            print("Errorcode: \(String(describing: Error.asAFError?.responseCode))")
+        }, onCompleted: {
+            print("completed")
+        }, onDisposed: {
+            print("disposed")
+        }).disposed(by: disposedBag)
+        
     }
+        
 }

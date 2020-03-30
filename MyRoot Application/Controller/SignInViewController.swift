@@ -34,6 +34,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
       UserDefaults.standard.set(false, forKey: "loggedIn")
       UserDefaults.standard.synchronize()
        
@@ -73,6 +74,7 @@ class SignInViewController: UIViewController {
                          UserDefaults.standard.set((response.payload?.email)!, forKey: "email")
                          UserDefaults.standard.set((response.payload?.country)!, forKey: "country")
                          UserDefaults.standard.set(response.token!, forKey: "token")
+                        
 //                        
                         
                         

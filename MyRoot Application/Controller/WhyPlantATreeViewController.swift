@@ -26,6 +26,16 @@ class WhyPlantATreeViewController: UIViewController {
       var userToken = ""
       var userContry = ""
     
+    
+    @IBOutlet weak var climateActionBtn: UIButton!
+    
+    
+    @IBOutlet weak var toCreateAJobBtn: UIButton!
+    
+    
+    @IBOutlet weak var giftBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,9 +45,14 @@ class WhyPlantATreeViewController: UIViewController {
         if sender.isSelected{
             sender.isSelected = false
              first = ""
+             
         }else{
             sender.isSelected = true
             first = "Climate action"
+            second = ""
+            third =  ""
+            toCreateAJobBtn.isSelected = false
+            giftBtn.isSelected = false
         }
     }
     
@@ -48,9 +63,12 @@ class WhyPlantATreeViewController: UIViewController {
              }else{
                  sender.isSelected = true
             second = "To create a job"
+             first = ""
+            third =  ""
+            climateActionBtn.isSelected = false
+            giftBtn.isSelected = false
              }
     }
-    
     
     
     @IBAction func checkBokThreeTapped(_ sender: UIButton) {
@@ -60,6 +78,10 @@ class WhyPlantATreeViewController: UIViewController {
              }else{
                  sender.isSelected = true
             third = "Gift"
+            second = ""
+            first =  ""
+            toCreateAJobBtn.isSelected = false
+            climateActionBtn.isSelected = false
              }
     }
     

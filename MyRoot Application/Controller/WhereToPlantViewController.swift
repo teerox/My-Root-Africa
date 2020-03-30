@@ -48,6 +48,7 @@ class WhereToPlantViewController: UIViewController {
                         whereToPlant = ""
                    }else{
                        sender.isSelected = true
+            
             listOfAfricanCountries.isUserInteractionEnabled = true
                 theGreatWall.isSelected = false
                    }
@@ -62,6 +63,7 @@ class WhereToPlantViewController: UIViewController {
            }else{
                sender.isSelected = true
             listOfAfricanCountries.isUserInteractionEnabled = false
+            //listOfAfricanCountries.isHidden = true
            // textField.isUserInteractionEnabled = false
             whereToPlant = "The Great Wall"
             the54Countries.isSelected = false

@@ -49,6 +49,7 @@ class HowToPlantAViewController: UIViewController {
                }else{
                    sender.isSelected = true
                    remote = "Remote"
+            inPerson = ""
             inPersonButtonOutlet.isSelected = false
                }
     }
@@ -60,6 +61,7 @@ class HowToPlantAViewController: UIViewController {
                }else{
                    sender.isSelected = true
                    inPerson = "InPerson"
+                    remote = ""
             remoteButtonoutlet.isSelected = false
                }
     }
