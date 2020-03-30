@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class DashBoardViewController: UIViewController {
     
+
     @IBOutlet weak var timeAndName: UILabel!
     
     @IBOutlet weak var fullName: UILabel!
@@ -18,8 +20,24 @@ class DashBoardViewController: UIViewController {
     @IBOutlet weak var plantTrees: UIButton!
     
     
+    @IBOutlet weak var totalNumberBigOne: UILabel!
+    
+    @IBOutlet weak var totalNumberBigtwo: UILabel!
+    
+    @IBOutlet weak var numberOfTreesOwned: UILabel!
+    
+    @IBOutlet weak var ownedInAfrica: UILabel!
+    
+    
+    @IBOutlet weak var numberedOwnedInGreatWall: UILabel!
+    
+    
+    
+    var ApiData = Utility()
+    
     @IBOutlet weak var logotBtn: UIBarButtonItem!
     
+     var disposedBag = DisposeBag()
     
     var userName = ""
     var userEmail = ""
@@ -29,10 +47,18 @@ class DashBoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         time()
+        
+        userName = UserDefaults.standard.string(forKey: "name")!
+        userEmail = UserDefaults.standard.string(forKey: "email")!
+        userContry = UserDefaults.standard.string(forKey: "country")!
+        userToken = UserDefaults.standard.string(forKey: "token")!
         fullName.text = userName
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(handleSignOut))
+        loadData()
+       
     }
+  
 
     func time(){
         // get the current date and time
@@ -43,29 +69,18 @@ class DashBoardViewController: UIViewController {
 
         // choose which date and time components are needed
         let requestedComponents: Set<Calendar.Component> = [
-            .year,
-            .month,
-            .day,
-            .hour,
-            .minute,
-            .second
-        ]
+            .year,.month,.day,.hour,.minute,.second]
         // get the components
         let dateTimeComponents = userCalendar.dateComponents(requestedComponents, from: currentDateTime)
-        
-        
-       // let time = "\(dateTimeComponents.hour!):\(dateTimeComponents.minute!)"
-        
-        
         if (dateTimeComponents.hour! >= 00 && dateTimeComponents.hour! < 12 ) {
 
-            timeAndName.text = "Good Morning!"
-            
+            timeAndName.text = "Good Morning"
+
         }else if (dateTimeComponents.hour! >= 12 && dateTimeComponents.hour! < 16 ) {
 
-            timeAndName.text = "Good Afternoon!"
+            timeAndName.text = "Good Afternoon"
         }else{
-            timeAndName.text = "Good Evening!"
+            timeAndName.text = "Good Evening"
         }
     }
     
@@ -78,12 +93,11 @@ class DashBoardViewController: UIViewController {
                    vc.userToken = userToken
                    vc.userContry = userContry
         }
-   
 
-        
      }
-//
+
     override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
            // 1
           let nav = self.navigationController?.navigationBar
 
@@ -91,34 +105,69 @@ class DashBoardViewController: UIViewController {
           nav?.barStyle = UIBarStyle.black
           nav?.tintColor = UIColor.yellow
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: "textMove", sender: self)
-//        UserDefaults.standard.set(false, forKey: "loggedIn")
-//        UserDefaults.standard.synchronize()
-//        dismiss(animated: true, completion: nil)
-
-                    self.loadLoginScreen()
+       // self.loadLoginScreen()
+        UserDefaults.standard.set(false, forKey: "loggedIn")
+        navigationController?.popToRootViewController(animated: true)
                 
     }
     
-    func loadLoginScreen(){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
-        self.present(viewController, animated: true, completion: nil)
+
+    func loadData(){
+        let endpoint = "tree/user/tree"
+        let url = "\(ApiData.API)\(endpoint)"
+      //  let local = 0
+      //  let greenCountry = 0
+        var countryArr = [String]()
+ 
+        GetallTrees.shared.reserveTree(urlString: url, token: userToken)
+            .subscribe(onNext:{(AllTrees) in
+            if AllTrees.status == 200{
+                //update UI
+                if let result = AllTrees.payload{
+                    if let numberOfTressIn54Countries = result.countries{
+                        self.totalNumberBigOne.text = "\(numberOfTressIn54Countries.count)"
+                        self.numberOfTreesOwned.text = "You have \(numberOfTressIn54Countries.count) trees reserved"
+                        for result in numberOfTressIn54Countries{
+                            let county = result.country
+                            countryArr.append(county!)
+
+                            }
+                     //  let num = Array(Set(countryArr)).count
+                       // print(num)
+                       // print(countryArr)
+                        if numberOfTressIn54Countries.count < 2{
+                        self.ownedInAfrica.text = "in \(numberOfTressIn54Countries.count) country in Africa"
+                        }else{
+                       self.ownedInAfrica.text = "in \(numberOfTressIn54Countries.count) countries in Africa"
+                        }
+                        }
+                    }
+                
+                if let result2 = AllTrees.payload{
+                    if let greenWallCount = result2.greenWall?.count{
+                    self.totalNumberBigtwo.text = "\(greenWallCount)"
+                   self.numberedOwnedInGreatWall.text = "You have \(greenWallCount) trees planted"
+                                  }
+                              }
+                }
+
+
+        },onError: { (Error) in
+
+            print("Error: \(String(describing: Error.asAFError))")
+            print("Errorcode: \(String(describing: Error.asAFError?.responseCode))")
+        }, onCompleted: {
+            print("completed")
+        }, onDisposed: {
+            print("disposed")
+        }).disposed(by: disposedBag)
+
     }
-    
-//    func displayErrorMessage(message:String) {
-//        let alertView = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-//        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-//        }
-//        alertView.addAction(OKAction)
-//        if let presenter = alertView.popoverPresentationController {
-//            presenter.sourceView = self.view
-//            presenter.sourceRect = self.view.bounds
-//        }
-//        self.present(alertView, animated: true, completion:nil)
-//    }
-    
+
 }

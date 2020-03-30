@@ -16,4 +16,11 @@ class VerificationSuccessfulViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationController?.setToolbarHidden(true, animated: false)
     }
+    
+    @IBAction func verifySuccessful(_ sender: UIButton) {
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
 }

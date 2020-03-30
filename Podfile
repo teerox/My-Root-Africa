@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'MyRoot Application' do
  use_frameworks!
@@ -8,5 +8,12 @@ target 'MyRoot Application' do
  pod 'iOSDropDown'
  
  pod 'IQKeyboardManagerSwift'
+ 
+ pod 'Alamofire', '~> 5.0'
+ 
+ pod 'RxSwift', '~> 5'
+ pod 'RxCocoa', '~> 5'
+ 
+
 
 end

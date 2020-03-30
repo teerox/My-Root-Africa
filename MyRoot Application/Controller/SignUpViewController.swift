@@ -69,16 +69,16 @@ class SignUpViewController: UIViewController{
                     let message = response["message"] as! String
                     
                     if (status == 200) {
-                        let token = response["token"] as! String
+                        let token = response["token"] as? String
                         DispatchQueue.main.async {
                       
-                            self.tokenPassed = token
+                            self.tokenPassed = token ?? ""
                             self.removeSpinner()
                             self.performSegue(withIdentifier: "moveToverification", sender: self)
                             self.showAlert(for: message)
                             
                             //pass this token to the next view controller
-                            self.tokenPassed = token
+                            self.tokenPassed = token ?? ""
                         }
                     }else{
                         DispatchQueue.main.async {
@@ -88,9 +88,9 @@ class SignUpViewController: UIViewController{
                     }
                 } else {
                     DispatchQueue.main.async {
-                     self.showAlert(for: "Network Error...Please try Again")
-                      self.removeSpinner()
-                     }
+                         self.showAlert(for: "Network Error...Please try Again")
+                          self.removeSpinner()
+                         }
                 }
             }
         } catch(let error) {

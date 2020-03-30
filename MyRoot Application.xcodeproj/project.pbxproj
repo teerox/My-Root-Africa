@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		063E38C74B3AF2118D387E4F /* Pods_MyRoot_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6487861BDAD724E95B9B3 /* Pods_MyRoot_Application.framework */; };
+		2D9E87A6B2FD831C8A580116 /* Pods_MyRoot_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C6487861BDAD724E95B9B3 /* Pods_MyRoot_Application.framework */; };
 		FA10C31F242B8133005AEEBD /* ForgotPasswordVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */; };
 		FA10C321242BA00C005AEEBD /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C320242BA00C005AEEBD /* ResetPassword.swift */; };
 		FA10C323242C0617005AEEBD /* SaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10C322242C0617005AEEBD /* SaveData.swift */; };
@@ -25,7 +25,6 @@
 		FA65451724221AB3009332E6 /* WhyPlantATreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65451624221AB3009332E6 /* WhyPlantATreeViewController.swift */; };
 		FA65451924221B52009332E6 /* HowToPlantATreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65451824221B52009332E6 /* HowToPlantATreeViewController.swift */; };
 		FA65451B24221B75009332E6 /* WhatTypeOfTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65451A24221B75009332E6 /* WhatTypeOfTreeViewController.swift */; };
-		FA65451D242236E2009332E6 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA65451C242236E2009332E6 /* iOSDropDown.framework */; };
 		FA65451F24224A68009332E6 /* AllCountriesAndCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65451E24224A68009332E6 /* AllCountriesAndCode.swift */; };
 		FA65452124224B05009332E6 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65452024224B05009332E6 /* Country.swift */; };
 		FA65452424225F8E009332E6 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65452324225F8E009332E6 /* Validator.swift */; };
@@ -38,6 +37,7 @@
 		FA65453324239DC6009332E6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA65453224239DC6009332E6 /* Utility.swift */; };
 		FA6545352423AB8B009332E6 /* AuthApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6545342423AB8B009332E6 /* AuthApiRequest.swift */; };
 		FA654537242499B9009332E6 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA654536242499B9009332E6 /* LoginRequest.swift */; };
+		FA7FDDCA242E097100FEC9DD /* navController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7FDDC9242E097100FEC9DD /* navController.swift */; };
 		FAC26987241A91FF00ECDCFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC26986241A91FF00ECDCFB /* AppDelegate.swift */; };
 		FAC26989241A91FF00ECDCFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC26988241A91FF00ECDCFB /* SceneDelegate.swift */; };
 		FAC2698B241A91FF00ECDCFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2698A241A91FF00ECDCFB /* HomeViewController.swift */; };
@@ -81,6 +81,13 @@
 		FA65453224239DC6009332E6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FA6545342423AB8B009332E6 /* AuthApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthApiRequest.swift; sourceTree = "<group>"; };
 		FA654536242499B9009332E6 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		FA7FDDC9242E097100FEC9DD /* navController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navController.swift; sourceTree = "<group>"; };
+		FA7FDDD8242FC93300FEC9DD /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7FDDDC242FC93B00FEC9DD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7FDDDF242FC95400FEC9DD /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7FDDE2242FC95900FEC9DD /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7FDDE5242FC96000FEC9DD /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7FDDFE242FCF3200FEC9DD /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		FAC26983241A91FF00ECDCFB /* MyRoot Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyRoot Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC26986241A91FF00ECDCFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAC26988241A91FF00ECDCFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,8 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA65451D242236E2009332E6 /* iOSDropDown.framework in Frameworks */,
-				063E38C74B3AF2118D387E4F /* Pods_MyRoot_Application.framework in Frameworks */,
+				2D9E87A6B2FD831C8A580116 /* Pods_MyRoot_Application.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,12 @@
 		A108653FF99763138CEF14F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA7FDDFE242FCF3200FEC9DD /* XcodeKit.framework */,
+				FA7FDDE5242FC96000FEC9DD /* IQKeyboardManagerSwift.framework */,
+				FA7FDDE2242FC95900FEC9DD /* RxRelay.framework */,
+				FA7FDDDF242FC95400FEC9DD /* RxCocoa.framework */,
+				FA7FDDDC242FC93B00FEC9DD /* RxSwift.framework */,
+				FA7FDDD8242FC93300FEC9DD /* Alamofire.framework */,
 				FA65451C242236E2009332E6 /* iOSDropDown.framework */,
 				93C6487861BDAD724E95B9B3 /* Pods_MyRoot_Application.framework */,
 			);
@@ -214,6 +226,7 @@
 				FA65451824221B52009332E6 /* HowToPlantATreeViewController.swift */,
 				FA65451A24221B75009332E6 /* WhatTypeOfTreeViewController.swift */,
 				FA10C31E242B8133005AEEBD /* ForgotPasswordVerification.swift */,
+				FA7FDDC9242E097100FEC9DD /* navController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +368,7 @@
 				FA6545092421B719009332E6 /* VerificationViewController.swift in Sources */,
 				FA65452124224B05009332E6 /* Country.swift in Sources */,
 				FA65451324221A48009332E6 /* TypeOfOccationViewController.swift in Sources */,
+				FA7FDDCA242E097100FEC9DD /* navController.swift in Sources */,
 				FAC2698B241A91FF00ECDCFB /* HomeViewController.swift in Sources */,
 				FAC26987241A91FF00ECDCFB /* AppDelegate.swift in Sources */,
 				FA10C325242C272B005AEEBD /* GetallTrees.swift in Sources */,

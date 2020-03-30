@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class VerificationViewController: UIViewController{
     
@@ -26,6 +27,7 @@ class VerificationViewController: UIViewController{
     var userToken2:String?
     var userToken = ""
     var ApiData = Utility()
+   
 
     var userMessage:String?
     
@@ -56,40 +58,40 @@ class VerificationViewController: UIViewController{
         if(validate.validate(input: textOne.text!) && validate.validate(input: textTwo.text!) && validate.validate(input: textThree.text!) && validate.validate(input: textFour.text!)){
               let OTP = textOne.text! + textTwo.text! + textThree.text! + textFour.text!
            
-            let auth = Auth(code: OTP)
+          
+            let code = ["code" : OTP]
 
-            
-          //  authorise.authorisation(token: userToken, userData: auth)
             let endPoint = "auth/verify"
             let url = "\(ApiData.API)\(endPoint)"
-            AuthApiRequest.shared.save(urlString: url, token: userToken, user: auth){ (success, error, result) in
-            if success {
-                let response = result!
-                let status = response.status!
-                let message = response.message!
-                print("Finally Done:\(response)")
-                if (status == 200) {
-                    _ = response.payload!
-                DispatchQueue.main.async {
-                 self.removeSpinner()
-                self.performSegue(withIdentifier: "moveToverification", sender: self)
-                self.showAlert(for: message)
-                  
-                    
-                }
-            }else{
-                DispatchQueue.main.async {
-                self.showAlert(for: message)
-                 self.removeSpinner()
-                }
-            }
-                    } else {
-            print("Failed ahh")
-                    }
-            
-           //performSegue(withIdentifier: "verificationSucessful", sender: self)
-            }
-        }else{
+
+           AuthApiRequest.shared.getApi(urlString: url, code: code, token: userToken){ (success, error, result) in
+               if success {
+                   let response = result!
+                   let status = response.status!
+                   let message = response.message!
+                   print("Finally Done:\(response)")
+                   if (status == 200) {
+                       _ = response.payload!
+                   DispatchQueue.main.async {
+                    self.removeSpinner()
+                   self.performSegue(withIdentifier: "verificationSucessful", sender: self)
+                   self.showAlert(for: message)
+                     
+                       
+                   }
+               }else{
+                   DispatchQueue.main.async {
+                   self.showAlert(for: message)
+                    self.removeSpinner()
+                   }
+               }
+                       } else {
+               print("Failed ahh")
+                       }
+               
+              //performSegue(withIdentifier: "verificationSucessful", sender: self)
+               }
+           }else{
             showAlert(for: "Field is Empty")
         }
     }
