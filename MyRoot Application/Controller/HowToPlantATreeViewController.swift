@@ -32,7 +32,7 @@ class HowToPlantAViewController: UIViewController {
     var userEmail = ""
     var userToken = ""
     var userContry = ""
-
+    
     @IBOutlet weak var remoteButtonoutlet: UIButton!
     
     @IBOutlet weak var inPersonButtonOutlet: UIButton!
@@ -44,51 +44,51 @@ class HowToPlantAViewController: UIViewController {
     @IBAction func remoteButton(_ sender: UIButton) {
         
         if sender.isSelected{
-                   sender.isSelected = false
-                    remote = ""
-               }else{
-                   sender.isSelected = true
-                   remote = "Remote"
+            sender.isSelected = false
+            remote = ""
+        }else{
+            sender.isSelected = true
+            remote = "Remote"
             inPerson = ""
             inPersonButtonOutlet.isSelected = false
-               }
+        }
     }
     
     @IBAction func inPersonButton(_ sender: UIButton) {
         if sender.isSelected{
-                   sender.isSelected = false
-                    inPerson = ""
-               }else{
-                   sender.isSelected = true
-                   inPerson = "InPerson"
-                    remote = ""
+            sender.isSelected = false
+            inPerson = ""
+        }else{
+            sender.isSelected = true
+            inPerson = "InPerson"
+            remote = ""
             remoteButtonoutlet.isSelected = false
-               }
+        }
     }
     
-
+    
     @IBAction func nextButton(_ sender: UIButton) {
         
         if (remote == "" && inPerson == "") {
-                 showAlert(for: "Select one")
-             }else if(remote != "" && inPerson == ""){
-                   sendRemote = remote
-                  performSegue(withIdentifier: "whatTypeOfTree", sender: self)
-             }else if(remote == "" && inPerson != ""){
-                  sendInPerson = inPerson
-                  performSegue(withIdentifier: "whatTypeOfTree", sender: self)
-             }
+            showAlert(for: "Select one")
+        }else if(remote != "" && inPerson == ""){
+            sendRemote = remote
+            performSegue(withIdentifier: "whatTypeOfTree", sender: self)
+        }else if(remote == "" && inPerson != ""){
+            sendInPerson = inPerson
+            performSegue(withIdentifier: "whatTypeOfTree", sender: self)
+        }
         
         
         
     }
     
     func showAlert(for alert: String) {
-         let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
-         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-         alertController.addAction(alertAction)
-         present(alertController, animated: true, completion: nil)
-     }
+        let alertController = UIAlertController(title: nil, message: alert, preferredStyle: UIAlertController.Style.alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     
     
@@ -111,6 +111,6 @@ class HowToPlantAViewController: UIViewController {
         vc.userContry = userContry
     }
     
-
+    
     
 }

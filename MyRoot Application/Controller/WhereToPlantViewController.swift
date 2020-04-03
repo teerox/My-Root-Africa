@@ -11,7 +11,7 @@ import UIKit
 import iOSDropDown
 
 class WhereToPlantViewController: UIViewController {
-
+    
     @IBOutlet weak var the54Countries: UIButton!
     
     
@@ -31,43 +31,64 @@ class WhereToPlantViewController: UIViewController {
     var userToken = ""
     var userContry = ""
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         listOfAfricanCountries.optionArray = listOfCountries.sorted()
         listOfAfricanCountries.delegate  = self as? UITextFieldDelegate
+        listOfAfricanCountries.isUserInteractionEnabled = false
+        listOfAfricanCountries.placeholder = "Disabled       "
         
     }
     
-
+    
     @IBAction func firstStackViewButton(_ sender: UIButton) {
-
+        
         if sender.isSelected{
-                       sender.isSelected = false
-                        whereToPlant = ""
-                   }else{
-                       sender.isSelected = true
+            sender.isSelected = false
+            whereToPlant = ""
+            listOfAfricanCountries.isUserInteractionEnabled = false
+            listOfAfricanCountries.placeholder = "Disabled       "
+            sender.layer.cornerRadius = 0
+            sender.layer.borderWidth = 0
             
+        }else{
+            sender.layer.borderColor =  UIColor.green.cgColor
+            sender.layer.cornerRadius = 8.0
+            sender.layer.borderWidth = 1.0
+            sender.isSelected = true
+            theGreatWall.layer.cornerRadius = 0
+            theGreatWall.layer.borderWidth = 0
             listOfAfricanCountries.isUserInteractionEnabled = true
-                theGreatWall.isSelected = false
-                   }
+            listOfAfricanCountries.placeholder = "Select Country"
+            
+            theGreatWall.isSelected = false
+        }
         
     }
-
-
+    
+    
     @IBAction func secondStackViewButton(_ sender: UIButton) {
         if sender.isSelected{
-               sender.isSelected = false
-                whereToPlant = ""
-           }else{
-               sender.isSelected = true
+            sender.isSelected = false
+            whereToPlant = ""
+            sender.layer.cornerRadius = 0
+            sender.layer.borderWidth = 0
+        }else{
+            sender.isSelected = true
+            sender.layer.borderColor =  UIColor.green.cgColor
+            sender.layer.cornerRadius = 8.0
+            sender.layer.borderWidth = 1.0
             listOfAfricanCountries.isUserInteractionEnabled = false
+            listOfAfricanCountries.placeholder = "Disabled       "
             //listOfAfricanCountries.isHidden = true
-           // textField.isUserInteractionEnabled = false
+            // textField.isUserInteractionEnabled = false
+            the54Countries.layer.cornerRadius = 0
+            the54Countries.layer.borderWidth = 0
             whereToPlant = "The Great Wall"
             the54Countries.isSelected = false
-           }
+        }
     }
     
     
@@ -85,16 +106,16 @@ class WhereToPlantViewController: UIViewController {
         do {
             let countrySelected = try self.listOfAfricanCountries.validatedText(validationType: ValidatorType.country)
             whereToPlant = countrySelected
-          performSegue(withIdentifier: "moveToWhyPlant", sender: self)
+            performSegue(withIdentifier: "moveToWhyPlant", sender: self)
             
-    } catch(let error) {
-               showAlert(for: (error as! ValidationError).message)
-               
-           }
+        } catch(let error) {
+            showAlert(for: (error as! ValidationError).message)
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-          let vc = segue.destination as! WhyPlantATreeViewController
+        let vc = segue.destination as! WhyPlantATreeViewController
         vc.countrySelected = whereToPlant
         
         vc.userName = userName

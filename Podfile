@@ -14,6 +14,7 @@ target 'MyRoot Application' do
  pod 'RxSwift', '~> 5'
  pod 'RxCocoa', '~> 5'
  
+ pod 'iProgressHUD', '~> 1.1.1'
 
 
 end

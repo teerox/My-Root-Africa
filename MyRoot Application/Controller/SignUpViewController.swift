@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import iOSDropDown
+import iProgressHUD
 
 
 class SignUpViewController: UIViewController{
@@ -51,7 +52,11 @@ class SignUpViewController: UIViewController{
     
     
     func validate(){
-        self.showSpinner(onView: self.view)
+        // self.showSpinner(onView: self.view)
+        // Attach iProgressHUD to views
+        iProgressHUD.sharedInstance().attachProgress(toView: self.view)
+        // Show iProgressHUD directly from view
+        view.showProgress()
         do {
             let userEmail = try self.email.validatedText(validationType: ValidatorType.email)
             let userFullName = try self.fullName.validatedText(validationType: ValidatorType.fullname)
@@ -71,7 +76,7 @@ class SignUpViewController: UIViewController{
                     if (status == 200) {
                         let token = response["token"] as? String
                         DispatchQueue.main.async {
-                      
+                            
                             self.tokenPassed = token ?? ""
                             self.removeSpinner()
                             self.performSegue(withIdentifier: "moveToverification", sender: self)
@@ -83,19 +88,22 @@ class SignUpViewController: UIViewController{
                     }else{
                         DispatchQueue.main.async {
                             self.showAlert(for: message)
-                            self.removeSpinner()
+                            //self.removeSpinner()
+                            self.view.dismissProgress()
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                         self.showAlert(for: "Network Error...Please try Again")
-                          self.removeSpinner()
-                         }
+                        self.showAlert(for: "Network Error...Please try Again")
+                        // self.removeSpinner()
+                        self.view.dismissProgress()
+                    }
                 }
             }
         } catch(let error) {
             showAlert(for: (error as! ValidationError).message)
-            self.removeSpinner()
+            //self.removeSpinner()
+            self.view.dismissProgress()
         }
     }
     
@@ -106,7 +114,7 @@ class SignUpViewController: UIViewController{
             let vc = segue.destination as! VerificationViewController
             vc.userToken = tokenPassed
         }
-  }
+    }
     
     
     func showAlert(for alert: String) {
@@ -151,7 +159,7 @@ extension UITextField {
 }
 
 
- var vSpinner : UIView?
+var vSpinner : UIView?
 extension UIViewController {
     func showSpinner(onView : UIView) {
         let spinnerView = UIView.init(frame: onView.bounds)
@@ -159,15 +167,15 @@ extension UIViewController {
         let ai = UIActivityIndicatorView.init()
         ai.startAnimating()
         ai.center = spinnerView.center
-
+        
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-
+        
         vSpinner = spinnerView
     }
-
+    
     func removeSpinner() {
         DispatchQueue.main.async {
             vSpinner?.removeFromSuperview()
