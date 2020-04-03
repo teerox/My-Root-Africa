@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import iProgressHUD
 
 class ForgotPasswordViewController: UIViewController {
     
@@ -28,46 +29,54 @@ class ForgotPasswordViewController: UIViewController {
     
     
     func validate(){
-          self.showSpinner(onView: self.view)
-          do {
-              let userEmail = try emailForForgotPassword.validatedTexts(validationTypes: ValidatorType.email)
-                    let endpoint = "auth/forgot-password"
-                    let url = "\(ApiData.API)\(endpoint)"
-                    let data = ForgotPasswordEmail(email: userEmail)
+        // self.showSpinner(onView: self.view)
+        // Attach iProgressHUD to views
+        iProgressHUD.sharedInstance().attachProgress(toView: self.view)
+        // Show iProgressHUD directly from view
+        view.showProgress()
+        do {
+            let userEmail = try emailForForgotPassword.validatedTexts(validationTypes: ValidatorType.email)
+            let endpoint = "auth/forgot-password"
+            let url = "\(ApiData.API)\(endpoint)"
+            let data = ForgotPasswordEmail(email: userEmail)
             print(url)
             ForgotPassword.shared.save(urlString: url, email: data){ (success, error, result) in
-                 if success {
-                              let response = result!
-                              let status = response.status
-                              let message = response.message
-                             
-                       if (status == 200){
+                if success {
+                    let response = result!
+                    let status = response.status
+                    let message = response.message
+                    
+                    if (status == 200){
                         print("My Response:\(response)")
-                           DispatchQueue.main.async {
-                               self.removeSpinner()
-                               self.performSegue(withIdentifier: "movetoResetPassword", sender: self)
-                               self.showAlert(for: message)
-                   
-                               }
-                           
-                       }else{
-                           DispatchQueue.main.async {
-                                      self.showAlert(for: message)
-                                      self.removeSpinner()
+                        DispatchQueue.main.async {
+                            // self.removeSpinner()
+                            self.view.dismissProgress()
+                            self.performSegue(withIdentifier: "movetoResetPassword", sender: self)
+                            self.showAlert(for: message)
+                            
                         }
-                       }
-                   
-                   }else{
-                       print(error!)
-                   }
+                        
+                    }else{
+                        DispatchQueue.main.async {
+                            self.showAlert(for: message)
+                            //self.removeSpinner()
+                            self.view.dismissProgress()
+                        }
+                    }
+                    
+                }else{
+                    self.showAlert(for: "Network Error")
+                    print(error!)
+                }
             }
             
-    
-          }catch(let error) {
-          showAlert(for: (error as! ValidationError).message)
-          self.removeSpinner()
-      }
-
+            
+        }catch(let error) {
+            showAlert(for: (error as! ValidationError).message)
+            // self.removeSpinner()
+            self.view.dismissProgress()
+        }
+        
     }
     
     

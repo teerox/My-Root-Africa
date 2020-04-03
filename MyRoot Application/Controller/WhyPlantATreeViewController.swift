@@ -21,10 +21,10 @@ class WhyPlantATreeViewController: UIViewController {
     var sendSecond = ""
     var sendThird = ""
     
-      var userName = ""
-      var userEmail = ""
-      var userToken = ""
-      var userContry = ""
+    var userName = ""
+    var userEmail = ""
+    var userToken = ""
+    var userContry = ""
     
     
     @IBOutlet weak var climateActionBtn: UIButton!
@@ -38,14 +38,14 @@ class WhyPlantATreeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     @IBAction func checkBokeOneTapped(_ sender: UIButton) {
         if sender.isSelected{
             sender.isSelected = false
-             first = ""
-             
+            first = ""
+            
         }else{
             sender.isSelected = true
             first = "Climate action"
@@ -58,31 +58,31 @@ class WhyPlantATreeViewController: UIViewController {
     
     @IBAction func checkBokTwoTapped(_ sender: UIButton) {
         if sender.isSelected{
-                 sender.isSelected = false
+            sender.isSelected = false
             second = ""
-             }else{
-                 sender.isSelected = true
+        }else{
+            sender.isSelected = true
             second = "To create a job"
-             first = ""
+            first = ""
             third =  ""
             climateActionBtn.isSelected = false
             giftBtn.isSelected = false
-             }
+        }
     }
     
     
     @IBAction func checkBokThreeTapped(_ sender: UIButton) {
         if sender.isSelected{
-                 sender.isSelected = false
+            sender.isSelected = false
             third = ""
-             }else{
-                 sender.isSelected = true
+        }else{
+            sender.isSelected = true
             third = "Gift"
             second = ""
             first =  ""
             toCreateAJobBtn.isSelected = false
             climateActionBtn.isSelected = false
-             }
+        }
     }
     
     
@@ -92,21 +92,21 @@ class WhyPlantATreeViewController: UIViewController {
         if (first == "" && second == "" && third == "") {
             showAlert(for: "Select atleast one")
         }else{
-        
-        if(first != ""){
-            sendFirst = first
-        }
-        if(second != ""){
-            sendSecond = second
-        }
-      
-        if(third != ""){
-            sendThird = third
-        }
+            
+            if(first != ""){
+                sendFirst = first
+            }
+            if(second != ""){
+                sendSecond = second
+            }
+            
+            if(third != ""){
+                sendThird = third
+            }
             
             performSegue(withIdentifier: "moveToTypeOfOccassion", sender: self)
-
-        
+            
+            
         }
     }
     
@@ -121,9 +121,9 @@ class WhyPlantATreeViewController: UIViewController {
         vc.country = countrySelected
         
         vc.userName = userName
-       vc.userEmail = userEmail
-       vc.userToken = userToken
-       vc.userContry = userContry
+        vc.userEmail = userEmail
+        vc.userToken = userToken
+        vc.userContry = userContry
     }
     
     func showAlert(for alert: String) {

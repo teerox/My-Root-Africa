@@ -9,18 +9,18 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         title = "My Root In Africa"
         
         if(isLoggedIn()){
-             self.performSegue(withIdentifier: "moveingToDashBoadFromHome", sender: self)
-
+            self.performSegue(withIdentifier: "moveingToDashBoadFromHome", sender: self)
+            
         }
- 
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
     }
-
+    
     fileprivate func isLoggedIn()->Bool{
         return UserDefaults.standard.bool(forKey: "loggedIn")
     }
